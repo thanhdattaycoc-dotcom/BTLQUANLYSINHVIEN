@@ -59,19 +59,40 @@ namespace BTLQUANLYSINHVIEN
                 {
                     MessageBox.Show("Đăng nhập thành công!");
 
+                    // Gán thông tin vào NhoTamThoi
+                    NhoTamThoi.Role = role;
+
                     if (role == "SinhVien")
                     {
+                        NhoTamThoi.MaSV = maNguoiDung;
+
+                        // Lấy tên sinh viên từ DB
+                        string queryTen = "SELECT TenSV FROM tblSinhVien WHERE MaSV=@MaSV";
+                        SqlCommand cmdTen = new SqlCommand(queryTen, conn);
+                        cmdTen.Parameters.AddWithValue("@MaSV", maNguoiDung);
+                        object ten = cmdTen.ExecuteScalar();
+                        if (ten != null) NhoTamThoi.TenSV = ten.ToString();
+
                         FormTrangChuSinhVien frmSV = new FormTrangChuSinhVien();
                         frmSV.Show();
                     }
                     else if (role == "GiangVien")
                     {
+                        NhoTamThoi.MaGV = maNguoiDung;
+
+                        string queryTen = "SELECT TenGV FROM tblGiangVien WHERE MaGV=@MaGV";
+                        SqlCommand cmdTen = new SqlCommand(queryTen, conn);
+                        cmdTen.Parameters.AddWithValue("@MaGV", maNguoiDung);
+                        object ten = cmdTen.ExecuteScalar();
+                        if (ten != null) NhoTamThoi.TenGV = ten.ToString();
+
                         FormTrangChuGiangVien frmGV = new FormTrangChuGiangVien();
                         frmGV.Show();
                     }
 
                     this.Hide();
                 }
+
                 else
                 {
                     MessageBox.Show("Thông tin đăng nhập không đúng!");

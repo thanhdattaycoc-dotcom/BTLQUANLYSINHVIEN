@@ -104,8 +104,8 @@ namespace BTLQUANLYSINHVIEN
                 MessageBox.Show("Mật khẩu xác nhận không khớp!");
                 return;
             }
-
-            string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
+           
+            string connStr = "Data Source=LAPTOP-K3A92CEE;Initial Catalog=QLSinhVien;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
