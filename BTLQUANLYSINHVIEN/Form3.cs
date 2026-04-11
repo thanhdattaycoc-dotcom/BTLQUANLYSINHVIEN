@@ -28,25 +28,25 @@ namespace BTLQUANLYSINHVIEN
         private void btnDangKyLop_Click(object sender, EventArgs e)
         {
             FormDangKyLopHoc frm = new FormDangKyLopHoc();
-            frm.Show();
+            frm.ShowDialog();
         }
 
         private void btnXemDiem_Click(object sender, EventArgs e)
         {
             FormDiemHocTap frm = new FormDiemHocTap();
-            frm.Show();
+            frm.ShowDialog();
         }
 
         private void btnLichHoc_Click(object sender, EventArgs e)
         {
             FormLichHoc frm = new FormLichHoc();
-            frm.Show();
+            frm.ShowDialog();
         }
 
         private void btnHienThi_Click(object sender, EventArgs e)
         {
             FormThongTinSinhVien frm = new FormThongTinSinhVien();
-            frm.Show();
+            frm.ShowDialog();
         }
     }
 }
