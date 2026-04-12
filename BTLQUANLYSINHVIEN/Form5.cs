@@ -51,7 +51,6 @@ namespace BTLQUANLYSINHVIEN
 
         private void btnQuayLai_Click(object sender, EventArgs e)
         {
-            FormTrangChuSinhVien frm = new FormTrangChuSinhVien();
             this.Close();
         }
     }
