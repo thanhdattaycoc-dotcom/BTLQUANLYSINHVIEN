@@ -86,7 +86,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(406, 74);
+            this.btnXoa.Location = new System.Drawing.Point(406, 75);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(108, 23);
             this.btnXoa.TabIndex = 10;
