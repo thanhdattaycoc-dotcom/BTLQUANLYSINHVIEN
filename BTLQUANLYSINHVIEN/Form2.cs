@@ -42,7 +42,7 @@ namespace BTLQUANLYSINHVIEN
                 return;
             }
 
-            string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG4;Initial Catalog=QLSinhVien;Integrated Security=True";
+            string connStr = @"Data Source=LAPTOP-K3A92CEE;Initial Catalog=QLSinhVien;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
