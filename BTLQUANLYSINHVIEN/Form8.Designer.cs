@@ -137,6 +137,7 @@
             this.btnQuayLai.TabIndex = 9;
             this.btnQuayLai.Text = "Quay lại";
             this.btnQuayLai.UseVisualStyleBackColor = true;
+            this.btnQuayLai.Click += new System.EventHandler(this.btnQuayLai_Click);
             // 
             // lblLopDangKY
             // 
