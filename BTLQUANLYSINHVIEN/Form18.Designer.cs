@@ -1,6 +1,6 @@
 ﻿namespace BTLQUANLYSINHVIEN
 {
-    partial class FormQuanLyNhapDiem
+    partial class FormThemMonHoc
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // FormQuanLyNhapDiem
+            // FormThemMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "FormQuanLyNhapDiem";
-            this.Text = "Quản lý nhập điểm";
-            this.Load += new System.EventHandler(this.FormQuanLyNhapDiem_Load);
+            this.Name = "FormThemMonHoc";
+            this.Text = "Thêm môn học";
             this.ResumeLayout(false);
 
         }

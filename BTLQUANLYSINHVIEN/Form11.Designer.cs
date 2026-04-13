@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "FormQuanLySinhVien";
             this.Text = "Quản lý sinh viên";
+            this.Load += new System.EventHandler(this.FormQuanLySinhVien_Load);
             this.ResumeLayout(false);
 
         }

@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace BTLQUANLYSINHVIEN
 {
-    public partial class FormQuanLySinhVien : Form
+    public partial class FormThemMonHoc : Form
     {
-        public FormQuanLySinhVien()
+        public FormThemMonHoc()
         {
             InitializeComponent();
-        }
-
-        private void FormQuanLySinhVien_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

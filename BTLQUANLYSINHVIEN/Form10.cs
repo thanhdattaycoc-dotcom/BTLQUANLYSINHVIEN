@@ -17,7 +17,7 @@ namespace BTLQUANLYSINHVIEN
         {
             InitializeComponent();
         }
-        string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG4;Initial Catalog=QLSinhVien;Integrated Security=True";
+        string connStr = @"Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
             
         private void FormQuanLyGiangVien_Load(object sender, EventArgs e)
         {
@@ -80,6 +80,11 @@ namespace BTLQUANLYSINHVIEN
             FormThemGiangVien formThem = new FormThemGiangVien();
             formThem.ShowDialog();
             FormQuanLyGiangVien_Load(sender, e); // refresh lại sau khi thêm
+        }
+
+        private void btnQuayLai_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

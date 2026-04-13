@@ -16,5 +16,10 @@ namespace BTLQUANLYSINHVIEN
         {
             InitializeComponent();
         }
+
+        private void FormQuanLyNhapDiem_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
