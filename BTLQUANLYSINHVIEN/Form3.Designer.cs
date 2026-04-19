@@ -84,6 +84,7 @@
             this.lblSinhVien.Size = new System.Drawing.Size(87, 16);
             this.lblSinhVien.TabIndex = 4;
             this.lblSinhVien.Text = "Mã sinh viên: ";
+            this.lblSinhVien.Click += new System.EventHandler(this.lblSinhVien_Click);
             // 
             // lblTen
             // 

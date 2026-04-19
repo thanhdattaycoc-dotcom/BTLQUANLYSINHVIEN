@@ -22,11 +22,16 @@ namespace BTLQUANLYSINHVIEN
 
         private void FormThemSinhVien_Load(object sender, EventArgs e)
         {
+            cboGioiTinh.Items.Clear();
+            cboGioiTinh.Items.Add("Nam");
+            cboGioiTinh.Items.Add("Nữ");
+            cboGioiTinh.DropDownStyle = ComboBoxStyle.DropDownList;
+
             LoadData();
         }
         private void LoadData()
         {
-            string connectionString = @"Data Source=LAPTOP-HPIHPRR9\DONG4;Initial Catalog=QLSinhVien;Integrated Security=True";
+            string connectionString = @"Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
 
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -41,7 +46,7 @@ namespace BTLQUANLYSINHVIEN
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=LAPTOP-HPIHPRR9\DONG4;Initial Catalog=QLSinhVien;Integrated Security=True";
+            string connectionString = @"Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -52,7 +57,7 @@ namespace BTLQUANLYSINHVIEN
                 cmd.Parameters.AddWithValue("@MaSV", txtMaSV.Text);
                 cmd.Parameters.AddWithValue("@TenSV", txtTenSV.Text);
                 cmd.Parameters.AddWithValue("@NgaySinh", dateTimePicker1.Value);
-                cmd.Parameters.AddWithValue("@GioiTinh", txtGioiTinh.Text);
+                cmd.Parameters.AddWithValue("@GioiTinh", cboGioiTinh.Text);
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
                 cmd.Parameters.AddWithValue("@SoDienThoai", txtSoDienThoai.Text);
                 cmd.Parameters.AddWithValue("@NoiSinh", txtNoiSinh.Text);

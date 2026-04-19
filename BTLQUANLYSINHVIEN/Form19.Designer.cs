@@ -37,7 +37,6 @@
             this.lblNoiSinh = new System.Windows.Forms.Label();
             this.txtMaSV = new System.Windows.Forms.TextBox();
             this.txtTenSV = new System.Windows.Forms.TextBox();
-            this.txtGioiTinh = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
             this.txtNoiSinh = new System.Windows.Forms.TextBox();
@@ -45,6 +44,7 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.btnQuayLai = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cboGioiTinh = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,13 +125,6 @@
             this.txtTenSV.Size = new System.Drawing.Size(218, 22);
             this.txtTenSV.TabIndex = 8;
             // 
-            // txtGioiTinh
-            // 
-            this.txtGioiTinh.Location = new System.Drawing.Point(170, 148);
-            this.txtGioiTinh.Name = "txtGioiTinh";
-            this.txtGioiTinh.Size = new System.Drawing.Size(218, 22);
-            this.txtGioiTinh.TabIndex = 9;
-            // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(559, 37);
@@ -190,11 +183,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(668, 197);
             this.dataGridView1.TabIndex = 16;
             // 
+            // cboGioiTinh
+            // 
+            this.cboGioiTinh.FormattingEnabled = true;
+            this.cboGioiTinh.Location = new System.Drawing.Point(163, 148);
+            this.cboGioiTinh.Name = "cboGioiTinh";
+            this.cboGioiTinh.Size = new System.Drawing.Size(225, 24);
+            this.cboGioiTinh.TabIndex = 17;
+            // 
             // FormThemSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 450);
+            this.Controls.Add(this.cboGioiTinh);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnQuayLai);
             this.Controls.Add(this.btnThem);
@@ -202,7 +204,6 @@
             this.Controls.Add(this.txtNoiSinh);
             this.Controls.Add(this.txtSoDienThoai);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtGioiTinh);
             this.Controls.Add(this.txtTenSV);
             this.Controls.Add(this.txtMaSV);
             this.Controls.Add(this.lblNoiSinh);
@@ -232,7 +233,6 @@
         private System.Windows.Forms.Label lblNoiSinh;
         private System.Windows.Forms.TextBox txtMaSV;
         private System.Windows.Forms.TextBox txtTenSV;
-        private System.Windows.Forms.TextBox txtGioiTinh;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtSoDienThoai;
         private System.Windows.Forms.TextBox txtNoiSinh;
@@ -240,5 +240,6 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnQuayLai;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox cboGioiTinh;
     }
 }

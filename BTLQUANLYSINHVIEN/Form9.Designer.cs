@@ -28,128 +28,175 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblThongTinCaNhan = new System.Windows.Forms.Label();
-            this.lblCCCD = new System.Windows.Forms.Label();
-            this.btnQuayLai = new System.Windows.Forms.Button();
-            this.lblHoTen = new System.Windows.Forms.Label();
+            this.lblDoiNgay = new System.Windows.Forms.Label();
+            this.btnThoat = new System.Windows.Forms.Button();
+            this.btnCapnhat = new System.Windows.Forms.Button();
             this.lblNgaySinh = new System.Windows.Forms.Label();
-            this.lblGioiTinh = new System.Windows.Forms.Label();
-            this.lblNoiSinh = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblSDT = new System.Windows.Forms.Label();
-            this.lblMaGiangVien = new System.Windows.Forms.Label();
+            this.dateNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.cboGioiTinh = new System.Windows.Forms.ComboBox();
+            this.txtMa = new System.Windows.Forms.TextBox();
+            this.txtNoiSinh = new System.Windows.Forms.TextBox();
+            this.txtTen = new System.Windows.Forms.TextBox();
+            this.txtSdt = new System.Windows.Forms.TextBox();
+            this.txtCCCD = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.lblThongTinGiangVien = new System.Windows.Forms.Label();
+            this.btnQuayLai = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // lblThongTinCaNhan
+            // lblDoiNgay
             // 
-            this.lblThongTinCaNhan.AutoSize = true;
-            this.lblThongTinCaNhan.Location = new System.Drawing.Point(252, 39);
-            this.lblThongTinCaNhan.Name = "lblThongTinCaNhan";
-            this.lblThongTinCaNhan.Size = new System.Drawing.Size(127, 16);
-            this.lblThongTinCaNhan.TabIndex = 0;
-            this.lblThongTinCaNhan.Text = "Thông tin giảng viên";
-            this.lblThongTinCaNhan.Click += new System.EventHandler(this.lblThongTinCaNhan_Click);
+            this.lblDoiNgay.AutoSize = true;
+            this.lblDoiNgay.Location = new System.Drawing.Point(278, 282);
+            this.lblDoiNgay.Name = "lblDoiNgay";
+            this.lblDoiNgay.Size = new System.Drawing.Size(101, 16);
+            this.lblDoiNgay.TabIndex = 41;
+            this.lblDoiNgay.Text = "Chọn ngày sinh:";
             // 
-            // lblCCCD
+            // btnThoat
             // 
-            this.lblCCCD.AutoSize = true;
-            this.lblCCCD.Location = new System.Drawing.Point(369, 153);
-            this.lblCCCD.Name = "lblCCCD";
-            this.lblCCCD.Size = new System.Drawing.Size(44, 16);
-            this.lblCCCD.TabIndex = 5;
-            this.lblCCCD.Text = "CCCD";
-            this.lblCCCD.Click += new System.EventHandler(this.lblCCCD_Click);
+            this.btnThoat.Location = new System.Drawing.Point(281, 396);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(111, 32);
+            this.btnThoat.TabIndex = 40;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
-            // btnQuayLai
+            // btnCapnhat
             // 
-            this.btnQuayLai.Location = new System.Drawing.Point(297, 369);
-            this.btnQuayLai.Name = "btnQuayLai";
-            this.btnQuayLai.Size = new System.Drawing.Size(82, 32);
-            this.btnQuayLai.TabIndex = 9;
-            this.btnQuayLai.Text = "Quay Lại";
-            this.btnQuayLai.UseVisualStyleBackColor = true;
-            this.btnQuayLai.Click += new System.EventHandler(this.btnQuayLai_Click);
-            // 
-            // lblHoTen
-            // 
-            this.lblHoTen.AutoSize = true;
-            this.lblHoTen.Location = new System.Drawing.Point(84, 99);
-            this.lblHoTen.Name = "lblHoTen";
-            this.lblHoTen.Size = new System.Drawing.Size(52, 16);
-            this.lblHoTen.TabIndex = 10;
-            this.lblHoTen.Text = "Họ tên: ";
+            this.btnCapnhat.Location = new System.Drawing.Point(425, 340);
+            this.btnCapnhat.Name = "btnCapnhat";
+            this.btnCapnhat.Size = new System.Drawing.Size(111, 32);
+            this.btnCapnhat.TabIndex = 39;
+            this.btnCapnhat.Text = "Cập nhật";
+            this.btnCapnhat.UseVisualStyleBackColor = true;
+            this.btnCapnhat.Click += new System.EventHandler(this.btnCapnhat_Click);
             // 
             // lblNgaySinh
             // 
             this.lblNgaySinh.AutoSize = true;
-            this.lblNgaySinh.Location = new System.Drawing.Point(84, 153);
+            this.lblNgaySinh.Location = new System.Drawing.Point(422, 236);
             this.lblNgaySinh.Name = "lblNgaySinh";
-            this.lblNgaySinh.Size = new System.Drawing.Size(73, 16);
-            this.lblNgaySinh.TabIndex = 11;
-            this.lblNgaySinh.Text = "Ngày sinh: ";
-            this.lblNgaySinh.Click += new System.EventHandler(this.lblNgaySinh_Click);
+            this.lblNgaySinh.Size = new System.Drawing.Size(70, 16);
+            this.lblNgaySinh.TabIndex = 38;
+            this.lblNgaySinh.Text = "Ngay sinh:";
+            this.lblNgaySinh.Click += new System.EventHandler(this.lblNgaySinh_Click_1);
             // 
-            // lblGioiTinh
+            // dateNgaySinh
             // 
-            this.lblGioiTinh.AutoSize = true;
-            this.lblGioiTinh.Location = new System.Drawing.Point(84, 207);
-            this.lblGioiTinh.Name = "lblGioiTinh";
-            this.lblGioiTinh.Size = new System.Drawing.Size(54, 16);
-            this.lblGioiTinh.TabIndex = 12;
-            this.lblGioiTinh.Text = "Giới tính";
+            this.dateNgaySinh.Location = new System.Drawing.Point(425, 282);
+            this.dateNgaySinh.Name = "dateNgaySinh";
+            this.dateNgaySinh.Size = new System.Drawing.Size(313, 22);
+            this.dateNgaySinh.TabIndex = 37;
             // 
-            // lblNoiSinh
+            // cboGioiTinh
             // 
-            this.lblNoiSinh.AutoSize = true;
-            this.lblNoiSinh.Location = new System.Drawing.Point(84, 252);
-            this.lblNoiSinh.Name = "lblNoiSinh";
-            this.lblNoiSinh.Size = new System.Drawing.Size(61, 16);
-            this.lblNoiSinh.TabIndex = 13;
-            this.lblNoiSinh.Text = "Nơi sinh: ";
+            this.cboGioiTinh.FormattingEnabled = true;
+            this.cboGioiTinh.Location = new System.Drawing.Point(425, 121);
+            this.cboGioiTinh.Name = "cboGioiTinh";
+            this.cboGioiTinh.Size = new System.Drawing.Size(313, 24);
+            this.cboGioiTinh.TabIndex = 36;
+            this.cboGioiTinh.Text = "Giới tính";
             // 
-            // lblEmail
+            // txtMa
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(366, 252);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(47, 16);
-            this.lblEmail.TabIndex = 14;
-            this.lblEmail.Text = "Email: ";
+            this.txtMa.Location = new System.Drawing.Point(63, 71);
+            this.txtMa.Name = "txtMa";
+            this.txtMa.Size = new System.Drawing.Size(313, 22);
+            this.txtMa.TabIndex = 35;
+            this.txtMa.Text = "Mã giảng viên";
             // 
-            // lblSDT
+            // txtNoiSinh
             // 
-            this.lblSDT.AutoSize = true;
-            this.lblSDT.Location = new System.Drawing.Point(366, 207);
-            this.lblSDT.Name = "lblSDT";
-            this.lblSDT.Size = new System.Drawing.Size(85, 16);
-            this.lblSDT.TabIndex = 15;
-            this.lblSDT.Text = "Số điện thoại";
+            this.txtNoiSinh.Location = new System.Drawing.Point(425, 178);
+            this.txtNoiSinh.Name = "txtNoiSinh";
+            this.txtNoiSinh.Size = new System.Drawing.Size(313, 22);
+            this.txtNoiSinh.TabIndex = 34;
+            this.txtNoiSinh.Text = "Nơi sinh";
             // 
-            // lblMaGiangVien
+            // txtTen
             // 
-            this.lblMaGiangVien.AutoSize = true;
-            this.lblMaGiangVien.Location = new System.Drawing.Point(369, 99);
-            this.lblMaGiangVien.Name = "lblMaGiangVien";
-            this.lblMaGiangVien.Size = new System.Drawing.Size(94, 16);
-            this.lblMaGiangVien.TabIndex = 16;
-            this.lblMaGiangVien.Text = "Mã giảng viên:";
-            this.lblMaGiangVien.Click += new System.EventHandler(this.label1_Click);
+            this.txtTen.Location = new System.Drawing.Point(63, 124);
+            this.txtTen.Name = "txtTen";
+            this.txtTen.Size = new System.Drawing.Size(313, 22);
+            this.txtTen.TabIndex = 33;
+            this.txtTen.Text = "Tên giảng viên";
+            // 
+            // txtSdt
+            // 
+            this.txtSdt.Location = new System.Drawing.Point(63, 178);
+            this.txtSdt.Name = "txtSdt";
+            this.txtSdt.Size = new System.Drawing.Size(313, 22);
+            this.txtSdt.TabIndex = 32;
+            this.txtSdt.Text = "Số điện thoại";
+            // 
+            // txtCCCD
+            // 
+            this.txtCCCD.Location = new System.Drawing.Point(425, 71);
+            this.txtCCCD.Name = "txtCCCD";
+            this.txtCCCD.Size = new System.Drawing.Size(313, 22);
+            this.txtCCCD.TabIndex = 31;
+            this.txtCCCD.Text = "CCCD";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(63, 227);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(313, 22);
+            this.txtEmail.TabIndex = 30;
+            this.txtEmail.Text = "Email";
+            // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(425, 396);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(111, 32);
+            this.btnSua.TabIndex = 29;
+            this.btnSua.Text = "Sửa thông tin";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // lblThongTinGiangVien
+            // 
+            this.lblThongTinGiangVien.AutoSize = true;
+            this.lblThongTinGiangVien.Location = new System.Drawing.Point(343, 23);
+            this.lblThongTinGiangVien.Name = "lblThongTinGiangVien";
+            this.lblThongTinGiangVien.Size = new System.Drawing.Size(127, 16);
+            this.lblThongTinGiangVien.TabIndex = 28;
+            this.lblThongTinGiangVien.Text = "Thông tin giảng viên";
+            // 
+            // btnQuayLai
+            // 
+            this.btnQuayLai.Location = new System.Drawing.Point(281, 340);
+            this.btnQuayLai.Name = "btnQuayLai";
+            this.btnQuayLai.Size = new System.Drawing.Size(111, 32);
+            this.btnQuayLai.TabIndex = 27;
+            this.btnQuayLai.Text = "Quay Lại";
+            this.btnQuayLai.UseVisualStyleBackColor = true;
+            this.btnQuayLai.Click += new System.EventHandler(this.btnQuayLai_Click_1);
             // 
             // FormThongTinGiangVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblMaGiangVien);
-            this.Controls.Add(this.lblSDT);
-            this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.lblNoiSinh);
-            this.Controls.Add(this.lblGioiTinh);
+            this.Controls.Add(this.lblDoiNgay);
+            this.Controls.Add(this.btnThoat);
+            this.Controls.Add(this.btnCapnhat);
             this.Controls.Add(this.lblNgaySinh);
-            this.Controls.Add(this.lblHoTen);
+            this.Controls.Add(this.dateNgaySinh);
+            this.Controls.Add(this.cboGioiTinh);
+            this.Controls.Add(this.txtMa);
+            this.Controls.Add(this.txtNoiSinh);
+            this.Controls.Add(this.txtTen);
+            this.Controls.Add(this.txtSdt);
+            this.Controls.Add(this.txtCCCD);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.btnSua);
+            this.Controls.Add(this.lblThongTinGiangVien);
             this.Controls.Add(this.btnQuayLai);
-            this.Controls.Add(this.lblCCCD);
-            this.Controls.Add(this.lblThongTinCaNhan);
             this.Name = "FormThongTinGiangVien";
             this.Text = "Thông tin giảng viên";
             this.Load += new System.EventHandler(this.FormThongTinGiangVien_Load);
@@ -160,15 +207,20 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblThongTinCaNhan;
-        private System.Windows.Forms.Label lblCCCD;
-        private System.Windows.Forms.Button btnQuayLai;
-        private System.Windows.Forms.Label lblHoTen;
+        private System.Windows.Forms.Label lblDoiNgay;
+        private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.Button btnCapnhat;
         private System.Windows.Forms.Label lblNgaySinh;
-        private System.Windows.Forms.Label lblGioiTinh;
-        private System.Windows.Forms.Label lblNoiSinh;
-        private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblSDT;
-        private System.Windows.Forms.Label lblMaGiangVien;
+        private System.Windows.Forms.DateTimePicker dateNgaySinh;
+        private System.Windows.Forms.ComboBox cboGioiTinh;
+        private System.Windows.Forms.TextBox txtMa;
+        private System.Windows.Forms.TextBox txtNoiSinh;
+        private System.Windows.Forms.TextBox txtTen;
+        private System.Windows.Forms.TextBox txtSdt;
+        private System.Windows.Forms.TextBox txtCCCD;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Label lblThongTinGiangVien;
+        private System.Windows.Forms.Button btnQuayLai;
     }
 }

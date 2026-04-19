@@ -59,7 +59,7 @@ namespace BTLQUANLYSINHVIEN
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-            FormBaoCao frm = new FormBaoCao();
+            FormQuanLyMonHoc frm = new FormQuanLyMonHoc();
             frm.ShowDialog();
         }
 

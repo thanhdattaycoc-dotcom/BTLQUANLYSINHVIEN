@@ -33,7 +33,7 @@
             this.btnThongTinCaNhan = new System.Windows.Forms.Button();
             this.btnQuanLyGiaoVien = new System.Windows.Forms.Button();
             this.btnQuanLySinhVien = new System.Windows.Forms.Button();
-            this.btnBaoCao = new System.Windows.Forms.Button();
+            this.btnMonHoc = new System.Windows.Forms.Button();
             this.btnNhapDiem = new System.Windows.Forms.Button();
             this.btnQuanLyLopHoc = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -88,15 +88,15 @@
             this.btnQuanLySinhVien.UseVisualStyleBackColor = true;
             this.btnQuanLySinhVien.Click += new System.EventHandler(this.btnQuanLySinhVien_Click);
             // 
-            // btnBaoCao
+            // btnMonHoc
             // 
-            this.btnBaoCao.Location = new System.Drawing.Point(546, 306);
-            this.btnBaoCao.Name = "btnBaoCao";
-            this.btnBaoCao.Size = new System.Drawing.Size(203, 81);
-            this.btnBaoCao.TabIndex = 7;
-            this.btnBaoCao.Text = "Báo cáo ";
-            this.btnBaoCao.UseVisualStyleBackColor = true;
-            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
+            this.btnMonHoc.Location = new System.Drawing.Point(546, 306);
+            this.btnMonHoc.Name = "btnMonHoc";
+            this.btnMonHoc.Size = new System.Drawing.Size(203, 81);
+            this.btnMonHoc.TabIndex = 7;
+            this.btnMonHoc.Text = "Quản lý môn học";
+            this.btnMonHoc.UseVisualStyleBackColor = true;
+            this.btnMonHoc.Click += new System.EventHandler(this.btnBaoCao_Click);
             // 
             // btnNhapDiem
             // 
@@ -125,7 +125,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnQuanLyLopHoc);
             this.Controls.Add(this.btnNhapDiem);
-            this.Controls.Add(this.btnBaoCao);
+            this.Controls.Add(this.btnMonHoc);
             this.Controls.Add(this.btnQuanLySinhVien);
             this.Controls.Add(this.btnQuanLyGiaoVien);
             this.Controls.Add(this.btnThongTinCaNhan);
@@ -148,7 +148,7 @@
         private System.Windows.Forms.Button btnThongTinCaNhan;
         private System.Windows.Forms.Button btnQuanLyGiaoVien;
         private System.Windows.Forms.Button btnQuanLySinhVien;
-        private System.Windows.Forms.Button btnBaoCao;
+        private System.Windows.Forms.Button btnMonHoc;
         private System.Windows.Forms.Button btnNhapDiem;
         private System.Windows.Forms.Button btnQuanLyLopHoc;
     }

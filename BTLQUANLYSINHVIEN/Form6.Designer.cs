@@ -37,18 +37,18 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(29, 60);
+            this.dataGridView1.Location = new System.Drawing.Point(59, 63);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(746, 300);
+            this.dataGridView1.Size = new System.Drawing.Size(1068, 409);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // lblThoiKhoaBieu
             // 
             this.lblThoiKhoaBieu.AutoSize = true;
-            this.lblThoiKhoaBieu.Location = new System.Drawing.Point(310, 29);
+            this.lblThoiKhoaBieu.Location = new System.Drawing.Point(525, 24);
             this.lblThoiKhoaBieu.Name = "lblThoiKhoaBieu";
             this.lblThoiKhoaBieu.Size = new System.Drawing.Size(113, 16);
             this.lblThoiKhoaBieu.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // btnQuayLai
             // 
-            this.btnQuayLai.Location = new System.Drawing.Point(341, 392);
+            this.btnQuayLai.Location = new System.Drawing.Point(568, 491);
             this.btnQuayLai.Name = "btnQuayLai";
             this.btnQuayLai.Size = new System.Drawing.Size(82, 32);
             this.btnQuayLai.TabIndex = 9;
@@ -68,7 +68,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1189, 535);
             this.Controls.Add(this.btnQuayLai);
             this.Controls.Add(this.lblThoiKhoaBieu);
             this.Controls.Add(this.dataGridView1);

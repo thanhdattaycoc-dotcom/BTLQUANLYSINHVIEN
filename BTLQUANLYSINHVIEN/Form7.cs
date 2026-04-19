@@ -39,7 +39,7 @@ namespace BTLQUANLYSINHVIEN
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
-                string query = @"SELECT m.TenMon, d.DiemTX, d.DiemGK, d.DiemCK
+                string query = @"SELECT m.TenMon, m.SoTinChi, d.DiemTX, d.DiemGK, d.DiemCK
                          FROM tblDiem d
                          JOIN tblLop l ON d.MaLop = l.MaLop
                          JOIN tblMonHoc m ON l.MaMon = m.MaMon
@@ -74,8 +74,9 @@ namespace BTLQUANLYSINHVIEN
             double tongDiem = 0;
             int soMonQua = 0;
             int soMonHocLai = 0;
+            double tongTinChi = 0;
 
-            DataTable dtHocLai = dt.Clone(); // bảng học lại
+
 
             foreach (DataRow row in dt.Rows)
             {
@@ -83,26 +84,30 @@ namespace BTLQUANLYSINHVIEN
                 double tx = Convert.ToDouble(row["DiemTX"]);
                 double gk = Convert.ToDouble(row["DiemGK"]);
                 double ck = Convert.ToDouble(row["DiemCK"]);
+                double soTinChi = Convert.ToDouble(row["SoTinChi"]);
                 double tb = TinhDiemTB(tx, gk, ck);
                 row["DiemTB"] = tb;
 
                 if (tb >= 4)
                 {
-                    tongDiem += tb;
+                    tongDiem += tb*soTinChi;
                     soMonQua++;
+                    tongTinChi += soTinChi;
+                    
                 }
                 else
                 {
-                    dtHocLai.ImportRow(row);
+           
                     soMonHocLai++;
                 }
             }
 
             DataGridViewBangDiem.DataSource = dt;
-            dataGridViewHocLai.DataSource = dtHocLai;
+
 
             // Điểm trung bình chung (bỏ môn <4)
-            double diemTBChung = (soMonQua > 0) ? tongDiem / soMonQua : 0;
+           
+            double diemTBChung = (soMonQua > 0) ? tongDiem / tongTinChi : 0;
             lblTrungBinh.Text = "Điểm trung bình: " + diemTBChung.ToString("0.00");
 
             // Xếp loại
@@ -113,7 +118,7 @@ namespace BTLQUANLYSINHVIEN
             else xepLoai = "Yếu";
             lblXepLoai.Text = "Xếp loại học lực: " + xepLoai;
 
-            lblQuaMon.Text = "Số môn tích lũy: " + soMonQua;
+            lblQuaMon.Text = "Số tín chỉ tích lũy: " + tongTinChi;
             lblHocLai.Text = "Số môn học lại: " + soMonHocLai;
         }
 

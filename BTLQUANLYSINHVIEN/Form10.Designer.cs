@@ -64,7 +64,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(973, 225);
+            this.dataGridView1.Size = new System.Drawing.Size(1148, 225);
             this.dataGridView1.TabIndex = 4;
             // 
             // txtTimKiem
@@ -108,7 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1042, 490);
+            this.ClientSize = new System.Drawing.Size(1207, 490);
             this.Controls.Add(this.btnQuayLai);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnThem);

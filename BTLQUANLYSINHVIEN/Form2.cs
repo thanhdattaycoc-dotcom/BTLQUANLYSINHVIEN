@@ -61,7 +61,7 @@ AND Password = @Password";
                 {
                     string role = reader["Role"].ToString();
 
-                    MessageBox.Show("Đăng nhập thành công!");
+                    
 
                     NhoTamThoi.Role = role;
 

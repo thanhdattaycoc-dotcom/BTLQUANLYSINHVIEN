@@ -49,6 +49,7 @@ namespace BTLQUANLYSINHVIEN
             // 👉 Chỉnh độ cao dòng
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.RowHeadersWidth = 100;
 
 
             // Load dữ liệu từ DB
@@ -56,11 +57,18 @@ namespace BTLQUANLYSINHVIEN
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
-                string query = @"SELECT l.TenLop, m.TenMon, l.Thu, l.Tiet, l.Phong
-                         FROM tblDangKy dk
-                         JOIN tblLop l ON dk.MaLop = l.MaLop
-                         JOIN tblMonHoc m ON l.MaMon = m.MaMon
-                         WHERE dk.MaSV = @MaSV";
+                string query = @"SELECT 
+                                l.TenLop, 
+                                m.TenMon, 
+                                gv.TenGV,   -- thêm tên giáo viên
+                                l.Thu, 
+                                l.Tiet, 
+                                l.Phong
+                            FROM tblDangKy dk
+                            JOIN tblLop l ON dk.MaLop = l.MaLop
+                            JOIN tblMonHoc m ON l.MaMon = m.MaMon
+                            JOIN tblGiangVien gv ON l.MaGV = gv.MaGV   -- JOIN thêm
+                            WHERE dk.MaSV = @MaSV;";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@MaSV", NhoTamThoi.MaSV);
 
@@ -72,6 +80,7 @@ namespace BTLQUANLYSINHVIEN
                     string monHoc = reader["TenMon"].ToString();
                     string lop = reader["TenLop"].ToString();
                     string phong = reader["Phong"].ToString();
+                    string giaovien = reader["TenGV"].ToString();
 
                     // Parse tiết để xác định ca
                     string[] range = tietStr.Split('-');
@@ -83,7 +92,7 @@ namespace BTLQUANLYSINHVIEN
                     else rowIndex = 2;                      // Tối
 
                     dataGridView1.Rows[rowIndex].Cells[thu - 2].Value =
-                        monHoc + "\n" + lop + "\nPhòng: " + phong;
+                        monHoc + "\n" + lop + "\n"+ giaovien +"\nPhòng: " + phong;
                 }
             }
         }

@@ -49,30 +49,66 @@ namespace BTLQUANLYSINHVIEN
 
         private void btnXoa_Click_1(object sender, EventArgs e)
         {
+          
             string maGV = txtTimKiem.Text.Trim();
+
             if (string.IsNullOrEmpty(maGV))
             {
                 MessageBox.Show("Vui lòng nhập mã giảng viên cần xóa!");
                 return;
             }
 
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa giảng viên này?",
-                                                  "Xác nhận xóa",
-                                                  MessageBoxButtons.YesNo,
-                                                  MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn xóa giảng viên này?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
 
             if (result == DialogResult.Yes)
             {
                 using (SqlConnection conn = new SqlConnection(connStr))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("DELETE FROM tblGiangVien WHERE MaGV = @MaGV", conn);
-                    cmd.Parameters.AddWithValue("@MaGV", maGV);
-                    cmd.ExecuteNonQuery();
+                    SqlTransaction trans = conn.BeginTransaction();
+
+                    try
+                    {
+                        SqlCommand cmd;
+                        // 1. tblDangKy (phụ thuộc tblLop)
+                        cmd = new SqlCommand(@"
+                    DELETE FROM tblDangKy 
+                    WHERE MaLop IN (SELECT MaLop FROM tblLop WHERE MaGV = @Ma)", conn, trans);
+                        cmd.Parameters.AddWithValue("@Ma", maGV);
+                        cmd.ExecuteNonQuery();
+                        // 2. tblUser
+                        cmd = new SqlCommand("DELETE FROM tblUser WHERE MaGV=@Ma", conn, trans);
+                        cmd.Parameters.AddWithValue("@Ma", maGV);
+                        cmd.ExecuteNonQuery();
+
+                        // 3. tblLop
+                        cmd = new SqlCommand("DELETE FROM tblLop WHERE MaGV=@Ma", conn, trans);
+                        cmd.Parameters.AddWithValue("@Ma", maGV);
+                        cmd.ExecuteNonQuery();
+
+                        // 4. tblGiangVien
+                        cmd = new SqlCommand("DELETE FROM tblGiangVien WHERE MaGV=@Ma", conn, trans);
+                        cmd.Parameters.AddWithValue("@Ma", maGV);
+                        cmd.ExecuteNonQuery();
+
+                        trans.Commit();
+
+                        MessageBox.Show("Xóa thành công!");
+                        FormQuanLyGiangVien_Load(sender, e);
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        MessageBox.Show("Lỗi khi xóa: " + ex.Message);
+                    }
                 }
-                MessageBox.Show("Xóa thành công!");
-                FormQuanLyGiangVien_Load(sender, e); // refresh lại DataGridView
             }
+        
         }
 
         private void btnThem_Click(object sender, EventArgs e)

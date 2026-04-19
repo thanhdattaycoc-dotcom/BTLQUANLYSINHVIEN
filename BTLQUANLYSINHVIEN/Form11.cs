@@ -50,28 +50,63 @@ namespace BTLQUANLYSINHVIEN
         private void btnXoa_Click(object sender, EventArgs e)
         {
             string maSV = txtTimKiem.Text.Trim();
+
             if (string.IsNullOrEmpty(maSV))
             {
                 MessageBox.Show("Vui lòng nhập mã sinh viên cần xóa!");
                 return;
             }
 
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa sinh viên này?",
-                                                  "Xác nhận xóa",
-                                                  MessageBoxButtons.YesNo,
-                                                  MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn xóa sinh viên này?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
 
             if (result == DialogResult.Yes)
             {
                 using (SqlConnection conn = new SqlConnection(connStr))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("DELETE FROM tblSinhVien WHERE MaSV = @MaSV", conn);
-                    cmd.Parameters.AddWithValue("@MaSV", maSV);
-                    cmd.ExecuteNonQuery();
+
+                    SqlTransaction trans = conn.BeginTransaction();
+
+                    try
+                    {
+                        SqlCommand cmd;
+
+                        // 1. tblDiem
+                        cmd = new SqlCommand("DELETE FROM tblDiem WHERE MaSV=@Ma", conn, trans);
+                        cmd.Parameters.AddWithValue("@Ma", maSV);
+                        cmd.ExecuteNonQuery();
+
+                        // 2. tblDangKy
+                        cmd = new SqlCommand("DELETE FROM tblDangKy WHERE MaSV=@Ma", conn, trans);
+                        cmd.Parameters.AddWithValue("@Ma", maSV);
+                        cmd.ExecuteNonQuery();
+
+                        // 3. tblUser
+                        cmd = new SqlCommand("DELETE FROM tblUser WHERE MaSV=@Ma", conn, trans);
+                        cmd.Parameters.AddWithValue("@Ma", maSV);
+                        cmd.ExecuteNonQuery();
+
+                        // 4. tblSinhVien
+                        cmd = new SqlCommand("DELETE FROM tblSinhVien WHERE MaSV=@Ma", conn, trans);
+                        cmd.Parameters.AddWithValue("@Ma", maSV);
+                        cmd.ExecuteNonQuery();
+
+                        trans.Commit();
+
+                        MessageBox.Show("Xóa thành công!");
+                        FormQuanLySinhVien_Load(sender, e);
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        MessageBox.Show("Lỗi khi xóa: " + ex.Message);
+                    }
                 }
-                MessageBox.Show("Xóa thành công!");
-                FormQuanLySinhVien_Load(sender, e); // refresh lại DataGridView
             }
         }
 

@@ -48,5 +48,10 @@ namespace BTLQUANLYSINHVIEN
             FormThongTinSinhVien frm = new FormThongTinSinhVien();
             frm.ShowDialog();
         }
+
+        private void lblSinhVien_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
