@@ -131,6 +131,7 @@
             this.cboMa.Name = "cboMa";
             this.cboMa.Size = new System.Drawing.Size(213, 24);
             this.cboMa.TabIndex = 18;
+            this.cboMa.SelectedIndexChanged += new System.EventHandler(this.cboMa_SelectedIndexChanged);
             // 
             // cboTen
             // 
@@ -139,6 +140,7 @@
             this.cboTen.Name = "cboTen";
             this.cboTen.Size = new System.Drawing.Size(213, 24);
             this.cboTen.TabIndex = 19;
+            this.cboTen.SelectedIndexChanged += new System.EventHandler(this.cboTen_SelectedIndexChanged);
             // 
             // txtTinChi
             // 

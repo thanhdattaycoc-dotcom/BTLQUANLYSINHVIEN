@@ -14,6 +14,7 @@ namespace BTLQUANLYSINHVIEN
 {
     public partial class FormQuanLyMonHoc : Form
     {
+        string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
         public FormQuanLyMonHoc()
         {
             InitializeComponent();
@@ -21,18 +22,23 @@ namespace BTLQUANLYSINHVIEN
 
         private void FormQuanLyMonHoc_Load(object sender, EventArgs e)
         {
-            LoadMonHoc();
-        }
 
+            LoadMonHoc();
+            LoadComboBox(); // thêm dòng này
+
+        }
         private void LoadMonHoc()
         {
-            string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
-                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM tblMonHoc", conn);
+
+                SqlDataAdapter da = new SqlDataAdapter(
+                    "SELECT MaMon, TenMon, SoTinChi FROM tblMonHoc", conn);
+
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+
                 dataGridView1.DataSource = dt;
             }
         }
@@ -113,7 +119,7 @@ namespace BTLQUANLYSINHVIEN
                     {
 
                         SqlCommand cmd = new SqlCommand("DELETE FROM tblMonHoc WHERE TenMon=@TenMon", conn);
-                        cmd.Parameters.AddWithValue("@TenMon", cboMa.Text.Trim());
+                        cmd.Parameters.AddWithValue("@TenMon", cboTen.Text.Trim());
                         int rows = cmd.ExecuteNonQuery();
                         if (rows > 0)
                         {
@@ -175,6 +181,102 @@ namespace BTLQUANLYSINHVIEN
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
+            string maMon = cboMa.Text.Trim();
+            string tenMon = cboTen.Text.Trim();
+            int soTinChi;
+
+            if (string.IsNullOrEmpty(maMon) || string.IsNullOrEmpty(tenMon) || !int.TryParse(txtTinChi.Text.Trim(), out soTinChi))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
+
+            DialogResult rs = MessageBox.Show("Bạn có chắc muốn cập nhật?",
+                                              "Xác nhận",
+                                              MessageBoxButtons.YesNo,
+                                              MessageBoxIcon.Question);
+
+            if (rs == DialogResult.Yes)
+            {
+                string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
+
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    string query = @"UPDATE tblMonHoc 
+                             SET TenMon = @TenMon,
+                                 SoTinChi = @SoTinChi
+                             WHERE MaMon = @MaMon";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@MaMon", maMon);
+                    cmd.Parameters.AddWithValue("@TenMon", tenMon);
+                    cmd.Parameters.AddWithValue("@SoTinChi", soTinChi);
+
+                    int rows = cmd.ExecuteNonQuery();
+
+                    if (rows > 0)
+                    {
+                        MessageBox.Show("Cập nhật thành công!");
+                        LoadMonHoc();
+                        LoadComboBox(); // refresh lại combobox
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy môn học!");
+                    }
+                }
+            }
+        
+        }
+        void LoadComboBox()
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter(
+                    "SELECT MaMon, TenMon FROM tblMonHoc", conn);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                isLoading = true;
+
+                cboMa.DataSource = dt.Copy();
+                cboMa.DisplayMember = "MaMon";
+                cboMa.ValueMember = "MaMon";
+
+                cboTen.DataSource = dt;
+                cboTen.DisplayMember = "TenMon";
+                cboTen.ValueMember = "MaMon";
+
+                cboMa.SelectedIndex = -1;
+                cboTen.SelectedIndex = -1;
+
+                isLoading = false;
+            }
+        }
+
+        bool isLoading = false;
+        private void cboMa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (isLoading) return;
+            if (cboMa.SelectedValue == null) return;
+
+            cboTen.SelectedValue = cboMa.SelectedValue;
+        }
+        
+        
+
+        private void cboTen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (isLoading) return;
+            if (cboTen.SelectedValue == null) return;
+
+            cboMa.SelectedValue = cboTen.SelectedValue;
 
         }
     }
