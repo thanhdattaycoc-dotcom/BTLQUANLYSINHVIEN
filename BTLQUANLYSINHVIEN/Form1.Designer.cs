@@ -30,17 +30,13 @@
         {
             this.lblMaNguoiDung = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblTenTaiKhoan = new System.Windows.Forms.Label();
             this.lblMatKhau = new System.Windows.Forms.Label();
             this.lblXacNhanMatKhau = new System.Windows.Forms.Label();
             this.txtMaNguoiDung = new System.Windows.Forms.TextBox();
-            this.txtTenTaiKhoan = new System.Windows.Forms.TextBox();
             this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.txtXacNhanMatKhau = new System.Windows.Forms.TextBox();
             this.btlDangKy = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboChucVu = new System.Windows.Forms.ComboBox();
-            this.lblChucVu = new System.Windows.Forms.Label();
             this.lblDaCoTaiKhoan = new System.Windows.Forms.Label();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -48,7 +44,7 @@
             // lblMaNguoiDung
             // 
             this.lblMaNguoiDung.AutoSize = true;
-            this.lblMaNguoiDung.Location = new System.Drawing.Point(59, 46);
+            this.lblMaNguoiDung.Location = new System.Drawing.Point(59, 95);
             this.lblMaNguoiDung.Name = "lblMaNguoiDung";
             this.lblMaNguoiDung.Size = new System.Drawing.Size(95, 16);
             this.lblMaNguoiDung.TabIndex = 0;
@@ -62,16 +58,6 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 1;
-            // 
-            // lblTenTaiKhoan
-            // 
-            this.lblTenTaiKhoan.AutoSize = true;
-            this.lblTenTaiKhoan.Location = new System.Drawing.Point(59, 91);
-            this.lblTenTaiKhoan.Name = "lblTenTaiKhoan";
-            this.lblTenTaiKhoan.Size = new System.Drawing.Size(88, 16);
-            this.lblTenTaiKhoan.TabIndex = 2;
-            this.lblTenTaiKhoan.Text = "Tên tài khoản";
-            this.lblTenTaiKhoan.Click += new System.EventHandler(this.lblTenTaiKhoan_Click);
             // 
             // lblMatKhau
             // 
@@ -96,19 +82,11 @@
             // 
             // txtMaNguoiDung
             // 
-            this.txtMaNguoiDung.Location = new System.Drawing.Point(246, 40);
+            this.txtMaNguoiDung.Location = new System.Drawing.Point(246, 92);
             this.txtMaNguoiDung.Name = "txtMaNguoiDung";
             this.txtMaNguoiDung.Size = new System.Drawing.Size(372, 22);
             this.txtMaNguoiDung.TabIndex = 5;
             this.txtMaNguoiDung.TextChanged += new System.EventHandler(this.txtMaNguoiDung_TextChanged);
-            // 
-            // txtTenTaiKhoan
-            // 
-            this.txtTenTaiKhoan.Location = new System.Drawing.Point(246, 85);
-            this.txtTenTaiKhoan.Name = "txtTenTaiKhoan";
-            this.txtTenTaiKhoan.Size = new System.Drawing.Size(372, 22);
-            this.txtTenTaiKhoan.TabIndex = 6;
-            this.txtTenTaiKhoan.TextChanged += new System.EventHandler(this.txtTenTaiKhoan_TextChanged);
             // 
             // txtMatKhau
             // 
@@ -145,25 +123,6 @@
             this.label1.TabIndex = 10;
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
-            // cboChucVu
-            // 
-            this.cboChucVu.FormattingEnabled = true;
-            this.cboChucVu.Location = new System.Drawing.Point(246, 224);
-            this.cboChucVu.Name = "cboChucVu";
-            this.cboChucVu.Size = new System.Drawing.Size(121, 24);
-            this.cboChucVu.TabIndex = 11;
-            this.cboChucVu.SelectedIndexChanged += new System.EventHandler(this.cboChucVu_SelectedIndexChanged);
-            // 
-            // lblChucVu
-            // 
-            this.lblChucVu.AutoSize = true;
-            this.lblChucVu.Location = new System.Drawing.Point(59, 227);
-            this.lblChucVu.Name = "lblChucVu";
-            this.lblChucVu.Size = new System.Drawing.Size(54, 16);
-            this.lblChucVu.TabIndex = 12;
-            this.lblChucVu.Text = "Chức vụ";
-            this.lblChucVu.Click += new System.EventHandler(this.label3_Click);
-            // 
             // lblDaCoTaiKhoan
             // 
             this.lblDaCoTaiKhoan.AutoSize = true;
@@ -191,17 +150,13 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.lblDaCoTaiKhoan);
-            this.Controls.Add(this.lblChucVu);
-            this.Controls.Add(this.cboChucVu);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btlDangKy);
             this.Controls.Add(this.txtXacNhanMatKhau);
             this.Controls.Add(this.txtMatKhau);
-            this.Controls.Add(this.txtTenTaiKhoan);
             this.Controls.Add(this.txtMaNguoiDung);
             this.Controls.Add(this.lblXacNhanMatKhau);
             this.Controls.Add(this.lblMatKhau);
-            this.Controls.Add(this.lblTenTaiKhoan);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblMaNguoiDung);
             this.Name = "FormDangKy";
@@ -216,17 +171,13 @@
 
         private System.Windows.Forms.Label lblMaNguoiDung;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblTenTaiKhoan;
         private System.Windows.Forms.Label lblMatKhau;
         private System.Windows.Forms.Label lblXacNhanMatKhau;
         private System.Windows.Forms.TextBox txtMaNguoiDung;
-        private System.Windows.Forms.TextBox txtTenTaiKhoan;
         private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.TextBox txtXacNhanMatKhau;
         private System.Windows.Forms.Button btlDangKy;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboChucVu;
-        private System.Windows.Forms.Label lblChucVu;
         private System.Windows.Forms.Label lblDaCoTaiKhoan;
         private System.Windows.Forms.Button btnDangNhap;
     }

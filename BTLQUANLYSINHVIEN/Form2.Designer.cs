@@ -30,12 +30,8 @@
         {
             this.lblMaNguoiDung = new System.Windows.Forms.Label();
             this.lblMatKhau = new System.Windows.Forms.Label();
-            this.lblXacNhanMatKhau = new System.Windows.Forms.Label();
-            this.lblChucVu = new System.Windows.Forms.Label();
             this.txtMaNguoiDung = new System.Windows.Forms.TextBox();
             this.txtMatKhau = new System.Windows.Forms.TextBox();
-            this.txtXacNhanMatKhau = new System.Windows.Forms.TextBox();
-            this.cboChucVu = new System.Windows.Forms.ComboBox();
             this.btlDangKy = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.lblChuaCoTaiKhoan = new System.Windows.Forms.Label();
@@ -60,24 +56,6 @@
             this.lblMatKhau.TabIndex = 4;
             this.lblMatKhau.Text = "Mật khẩu ";
             // 
-            // lblXacNhanMatKhau
-            // 
-            this.lblXacNhanMatKhau.AutoSize = true;
-            this.lblXacNhanMatKhau.Location = new System.Drawing.Point(71, 179);
-            this.lblXacNhanMatKhau.Name = "lblXacNhanMatKhau";
-            this.lblXacNhanMatKhau.Size = new System.Drawing.Size(119, 16);
-            this.lblXacNhanMatKhau.TabIndex = 5;
-            this.lblXacNhanMatKhau.Text = "Xác nhận mật khẩu";
-            // 
-            // lblChucVu
-            // 
-            this.lblChucVu.AutoSize = true;
-            this.lblChucVu.Location = new System.Drawing.Point(71, 234);
-            this.lblChucVu.Name = "lblChucVu";
-            this.lblChucVu.Size = new System.Drawing.Size(54, 16);
-            this.lblChucVu.TabIndex = 13;
-            this.lblChucVu.Text = "Chức vụ";
-            // 
             // txtMaNguoiDung
             // 
             this.txtMaNguoiDung.Location = new System.Drawing.Point(232, 76);
@@ -91,21 +69,6 @@
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Size = new System.Drawing.Size(372, 22);
             this.txtMatKhau.TabIndex = 15;
-            // 
-            // txtXacNhanMatKhau
-            // 
-            this.txtXacNhanMatKhau.Location = new System.Drawing.Point(232, 176);
-            this.txtXacNhanMatKhau.Name = "txtXacNhanMatKhau";
-            this.txtXacNhanMatKhau.Size = new System.Drawing.Size(372, 22);
-            this.txtXacNhanMatKhau.TabIndex = 16;
-            // 
-            // cboChucVu
-            // 
-            this.cboChucVu.FormattingEnabled = true;
-            this.cboChucVu.Location = new System.Drawing.Point(232, 231);
-            this.cboChucVu.Name = "cboChucVu";
-            this.cboChucVu.Size = new System.Drawing.Size(121, 24);
-            this.cboChucVu.TabIndex = 17;
             // 
             // btlDangKy
             // 
@@ -145,12 +108,8 @@
             this.Controls.Add(this.lblChuaCoTaiKhoan);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.btlDangKy);
-            this.Controls.Add(this.cboChucVu);
-            this.Controls.Add(this.txtXacNhanMatKhau);
             this.Controls.Add(this.txtMatKhau);
             this.Controls.Add(this.txtMaNguoiDung);
-            this.Controls.Add(this.lblChucVu);
-            this.Controls.Add(this.lblXacNhanMatKhau);
             this.Controls.Add(this.lblMatKhau);
             this.Controls.Add(this.lblMaNguoiDung);
             this.Name = "FormDangNhap";
@@ -165,12 +124,8 @@
 
         private System.Windows.Forms.Label lblMaNguoiDung;
         private System.Windows.Forms.Label lblMatKhau;
-        private System.Windows.Forms.Label lblXacNhanMatKhau;
-        private System.Windows.Forms.Label lblChucVu;
         private System.Windows.Forms.TextBox txtMaNguoiDung;
         private System.Windows.Forms.TextBox txtMatKhau;
-        private System.Windows.Forms.TextBox txtXacNhanMatKhau;
-        private System.Windows.Forms.ComboBox cboChucVu;
         private System.Windows.Forms.Button btlDangKy;
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.Label lblChuaCoTaiKhoan;

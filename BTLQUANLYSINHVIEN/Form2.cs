@@ -25,18 +25,16 @@ namespace BTLQUANLYSINHVIEN
 
         private void FormDangNhap_Load(object sender, EventArgs e)
         {
-            cboChucVu.DropDownStyle = ComboBoxStyle.DropDownList; // chỉ cho chọn, không nhập
-            cboChucVu.Items.Add("SinhVien");
-            cboChucVu.Items.Add("GiangVien");
+            
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             string maNguoiDung = txtMaNguoiDung.Text.Trim();
             string matKhau = txtMatKhau.Text.Trim();
-            string role = cboChucVu.SelectedItem?.ToString();
+            
 
-            if (string.IsNullOrEmpty(maNguoiDung) || string.IsNullOrEmpty(matKhau) || string.IsNullOrEmpty(role))
+            if (string.IsNullOrEmpty(maNguoiDung) || string.IsNullOrEmpty(matKhau) )
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
                 return;
@@ -47,52 +45,60 @@ namespace BTLQUANLYSINHVIEN
             {
                 conn.Open();
 
-                string query = "SELECT COUNT(*) FROM tblUser WHERE (MaSV=@Ma OR MaGV=@Ma) AND Password=@Password AND Role=@Role";
+                string query = @"
+SELECT Role, MaSV, MaGV 
+FROM tblUser 
+WHERE (MaSV = @Ma OR MaGV = @Ma) 
+AND Password = @Password";
+
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Ma", maNguoiDung);
                 cmd.Parameters.AddWithValue("@Password", matKhau);
-                cmd.Parameters.AddWithValue("@Role", role);
 
-                int count = (int)cmd.ExecuteScalar();
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                if (count > 0)
+                if (reader.Read())
                 {
+                    string role = reader["Role"].ToString();
+
                     MessageBox.Show("Đăng nhập thành công!");
 
-                    // Gán thông tin vào NhoTamThoi
                     NhoTamThoi.Role = role;
 
                     if (role == "SinhVien")
                     {
                         NhoTamThoi.MaSV = maNguoiDung;
+                        reader.Close();
 
-                        // Lấy tên sinh viên từ DB
+                        // lấy tên
                         string queryTen = "SELECT TenSV FROM tblSinhVien WHERE MaSV=@MaSV";
                         SqlCommand cmdTen = new SqlCommand(queryTen, conn);
                         cmdTen.Parameters.AddWithValue("@MaSV", maNguoiDung);
+
                         object ten = cmdTen.ExecuteScalar();
                         if (ten != null) NhoTamThoi.TenSV = ten.ToString();
 
-                        FormTrangChuSinhVien frmSV = new FormTrangChuSinhVien();
-                        frmSV.Show();
+                        FormTrangChuSinhVien frm = new FormTrangChuSinhVien();
+                        frm.Show();
                     }
                     else if (role == "GiangVien")
                     {
                         NhoTamThoi.MaGV = maNguoiDung;
+                        reader.Close();
 
                         string queryTen = "SELECT TenGV FROM tblGiangVien WHERE MaGV=@MaGV";
                         SqlCommand cmdTen = new SqlCommand(queryTen, conn);
                         cmdTen.Parameters.AddWithValue("@MaGV", maNguoiDung);
+
                         object ten = cmdTen.ExecuteScalar();
                         if (ten != null) NhoTamThoi.TenGV = ten.ToString();
 
-                        FormTrangChuGiangVien frmGV = new FormTrangChuGiangVien();
-                        frmGV.Show();
+                        FormTrangChuGiangVien frm = new FormTrangChuGiangVien();
+                        frm.Show();
                     }
 
                     this.Hide();
                 }
-
                 else
                 {
                     MessageBox.Show("Thông tin đăng nhập không đúng!");
@@ -107,5 +113,14 @@ namespace BTLQUANLYSINHVIEN
             this.Hide();
         }
 
+        private void cboChucVu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtXacNhanMatKhau_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

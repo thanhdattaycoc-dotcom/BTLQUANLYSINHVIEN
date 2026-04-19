@@ -20,8 +20,6 @@ namespace BTLQUANLYSINHVIEN
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cboChucVu.Items.Add("SinhVien");
-            cboChucVu.Items.Add("GiangVien");
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -87,13 +85,12 @@ namespace BTLQUANLYSINHVIEN
         private void btlDangKy_Click(object sender, EventArgs e)
         {
             string maNguoiDung = txtMaNguoiDung.Text.Trim();
-            string tenTaiKhoan = txtTenTaiKhoan.Text.Trim();
             string matKhau = txtMatKhau.Text.Trim();
             string xacNhanMatKhau = txtXacNhanMatKhau.Text.Trim();
-            string role = cboChucVu.SelectedItem?.ToString();
 
-            if (string.IsNullOrEmpty(maNguoiDung) || string.IsNullOrEmpty(tenTaiKhoan) ||
-                string.IsNullOrEmpty(matKhau) || string.IsNullOrEmpty(xacNhanMatKhau) || string.IsNullOrEmpty(role))
+            if (string.IsNullOrEmpty(maNguoiDung) ||
+                string.IsNullOrEmpty(matKhau) ||
+                string.IsNullOrEmpty(xacNhanMatKhau))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
                 return;
@@ -104,41 +101,68 @@ namespace BTLQUANLYSINHVIEN
                 MessageBox.Show("Mật khẩu xác nhận không khớp!");
                 return;
             }
-           
-            string connStr = "Data Source=LAPTOP-K3A92CEE;Initial Catalog=QLSinhVien;Integrated Security=True";
+
+            string connStr = @"Data Source=LAPTOP-K3A92CEE;Initial Catalog=QLSinhVien;Integrated Security=True";
+
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
 
-                string checkQuery = "SELECT COUNT(*) FROM tblUser WHERE Username=@Username";
-                SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
-                checkCmd.Parameters.AddWithValue("@Username", tenTaiKhoan);
-                int count = (int)checkCmd.ExecuteScalar();
+                // Xác định là SV hay GV
+                string checkSV = "SELECT COUNT(*) FROM tblSinhVien WHERE MaSV=@Ma";
+                SqlCommand cmdSV = new SqlCommand(checkSV, conn);
+                cmdSV.Parameters.AddWithValue("@Ma", maNguoiDung);
+                int isSV = (int)cmdSV.ExecuteScalar();
 
-                if (count > 0)
+                string checkGV = "SELECT COUNT(*) FROM tblGiangVien WHERE MaGV=@Ma";
+                SqlCommand cmdGV = new SqlCommand(checkGV, conn);
+                cmdGV.Parameters.AddWithValue("@Ma", maNguoiDung);
+                int isGV = (int)cmdGV.ExecuteScalar();
+
+                if (isSV == 0 && isGV == 0)
                 {
-                    MessageBox.Show("Tên tài khoản đã tồn tại!");
+                    MessageBox.Show("Mã không tồn tại!");
                     return;
                 }
 
-                string insertQuery = "INSERT INTO tblUser (Username, Password, Role, MaSV, MaGV) VALUES (@Username, @Password, @Role, @MaSV, @MaGV)";
-                SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
-                insertCmd.Parameters.AddWithValue("@Username", tenTaiKhoan);
-                insertCmd.Parameters.AddWithValue("@Password", matKhau);
-                insertCmd.Parameters.AddWithValue("@Role", role);
+                // Kiểm tra đã đăng ký chưa
+                string checkUser = "SELECT COUNT(*) FROM tblUser WHERE MaSV=@Ma OR MaGV=@Ma";
+                SqlCommand cmdCheckUser = new SqlCommand(checkUser, conn);
+                cmdCheckUser.Parameters.AddWithValue("@Ma", maNguoiDung);
+                int exists = (int)cmdCheckUser.ExecuteScalar();
 
-                if (role == "SinhVien")
+                if (exists > 0)
                 {
+                    MessageBox.Show("Mã này đã đăng ký tài khoản!");
+                    return;
+                }
+
+                // Insert
+                string insertQuery = @"
+INSERT INTO tblUser (Username, Password, Role, MaSV, MaGV) 
+VALUES (@Username, @Password, @Role, @MaSV, @MaGV)";
+                SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
+
+                insertCmd.Parameters.AddWithValue("@Password", matKhau);
+
+                if (isSV > 0)
+                {
+                    insertCmd.Parameters.AddWithValue("@Username", maNguoiDung);
+                    insertCmd.Parameters.AddWithValue("@Role", "SinhVien");
                     insertCmd.Parameters.AddWithValue("@MaSV", maNguoiDung);
                     insertCmd.Parameters.AddWithValue("@MaGV", DBNull.Value);
                 }
-                else // GiangVien
+                else
                 {
+                    insertCmd.Parameters.AddWithValue("@Username", maNguoiDung);
+
+                    insertCmd.Parameters.AddWithValue("@Role", "GiangVien");
                     insertCmd.Parameters.AddWithValue("@MaGV", maNguoiDung);
                     insertCmd.Parameters.AddWithValue("@MaSV", DBNull.Value);
                 }
 
                 insertCmd.ExecuteNonQuery();
+
                 MessageBox.Show("Đăng ký thành công!");
             }
         }
