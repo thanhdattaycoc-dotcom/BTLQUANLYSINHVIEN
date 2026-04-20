@@ -33,7 +33,6 @@
             this.btnTimKiemMaLop = new System.Windows.Forms.Button();
             this.btnThemLop = new System.Windows.Forms.Button();
             this.btnXoaMaLop = new System.Windows.Forms.Button();
-            this.txtMaLop = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.btnQuayLai = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
