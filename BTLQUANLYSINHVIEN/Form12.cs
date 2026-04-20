@@ -13,15 +13,16 @@ namespace BTLQUANLYSINHVIEN
 {
     public partial class FormQuanLyNhapDiem : Form
     {
-        SqlConnection conn = new SqlConnection(
-            @"Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True");
+
+        string connStr = @"Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
         public FormQuanLyNhapDiem()
         {
             InitializeComponent();
         }
         private void LoadBangDiemTheoLop(string maLop)
         {
-            string sql = @"
+            using (SqlConnection conn = new SqlConnection(connStr)) {
+                string sql = @"
         SELECT 
             L.MaLop,
             M.TenMon,
@@ -38,53 +39,59 @@ namespace BTLQUANLYSINHVIEN
         LEFT JOIN tblDiem D ON SV.MaSV = D.MaSV AND L.MaLop = D.MaLop
         WHERE L.MaLop = @MaLop";
 
-            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-            da.SelectCommand.Parameters.AddWithValue("@MaLop", maLop);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dataGridViewTheoLop.DataSource = dt;
+                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                da.SelectCommand.Parameters.AddWithValue("@MaLop", maLop);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridViewTheoLop.DataSource = dt;
+                dataGridViewTheoLop.Columns["DiemTB"].ReadOnly = true;
+            }
         }
 
         private void FormQuanLyNhapDiem_Load(object sender, EventArgs e)
         {
-            // Load danh sách lớp
-            SqlDataAdapter da = new SqlDataAdapter("SELECT MaLop FROM tblLop", conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            cboMaLop.DataSource = dt;
-            cboMaLop.DisplayMember = "MaLop";
-            cboMaLop.ValueMember = "MaLop";
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                // Load danh sách lớp
+                SqlDataAdapter da = new SqlDataAdapter("SELECT MaLop FROM tblLop", conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                cboMaLop.DataSource = dt;
+                cboMaLop.DisplayMember = "MaLop";
+                cboMaLop.ValueMember = "MaLop";
 
+            }
         }
         private void cboMaLop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string maLop = cboMaLop.SelectedValue.ToString();
-
-            // Hiện tên môn và mã môn
-            SqlCommand cmd = new SqlCommand(
-                "SELECT L.MaMon, M.TenMon FROM tblLop L JOIN tblMonHoc M ON L.MaMon=M.MaMon WHERE L.MaLop=@MaLop", conn);
-            cmd.Parameters.AddWithValue("@MaLop", maLop);
-            conn.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
-                lblMaMon.Text = "Mã môn: " + dr["MaMon"].ToString();
-                lblTenMon.Text = "Tên môn: " + dr["TenMon"].ToString();
+
+
+                string maLop = cboMaLop.SelectedValue.ToString();
+
+                // Hiện tên môn và mã môn
+                SqlCommand cmd = new SqlCommand(
+                    "SELECT L.MaMon, M.TenMon FROM tblLop L JOIN tblMonHoc M ON L.MaMon=M.MaMon WHERE L.MaLop=@MaLop", conn);
+                cmd.Parameters.AddWithValue("@MaLop", maLop);
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    lblMaMon.Text = "Mã môn: " + dr["MaMon"].ToString();
+                    lblTenMon.Text = "Tên môn: " + dr["TenMon"].ToString();
+                }
+                conn.Close();
+
+                // Load sinh viên đăng ký lớp
+                SqlDataAdapter da = new SqlDataAdapter(
+                    "SELECT SV.MaSV FROM tblDangKy DK JOIN tblSinhVien SV ON DK.MaSV=SV.MaSV WHERE DK.MaLop=@MaLop", conn);
+                da.SelectCommand.Parameters.AddWithValue("@MaLop", maLop);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                LoadBangDiemTheoLop(maLop);
+
             }
-            conn.Close();
-
-            // Load sinh viên đăng ký lớp
-            SqlDataAdapter da = new SqlDataAdapter(
-                "SELECT SV.MaSV FROM tblDangKy DK JOIN tblSinhVien SV ON DK.MaSV=SV.MaSV WHERE DK.MaLop=@MaLop", conn);
-            da.SelectCommand.Parameters.AddWithValue("@MaLop", maLop);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            cboMaSV.DataSource = dt;
-            cboMaSV.DisplayMember = "MaSV";
-            cboMaSV.ValueMember = "MaSV";
-            LoadBangDiemTheoLop(maLop);
-
-
         }
 
 
@@ -96,33 +103,7 @@ namespace BTLQUANLYSINHVIEN
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string maSV = cboMaSV.SelectedValue.ToString();
-            string maLop = cboMaLop.SelectedValue.ToString();
-
-            SqlCommand cmd = new SqlCommand(
-                "SELECT DiemTX, DiemGK, DiemCK FROM tblDiem WHERE MaSV=@MaSV AND MaLop=@MaLop", conn);
-            cmd.Parameters.AddWithValue("@MaSV", maSV);
-            cmd.Parameters.AddWithValue("@MaLop", maLop);
-            conn.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                txtDiemTX.Text = dr["DiemTX"].ToString();
-                txtDiemGK.Text = dr["DiemGK"].ToString();
-                txtDiemCK.Text = dr["DiemCK"].ToString();
-            }
-            else
-            {
-                txtDiemTX.Clear();
-                txtDiemGK.Clear();
-                txtDiemCK.Clear();
-            }
-            conn.Close();
-
-        }
-
+        
         
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -130,26 +111,6 @@ namespace BTLQUANLYSINHVIEN
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string maSV = cboMaSV.SelectedValue.ToString();
-            string maLop = cboMaLop.SelectedValue.ToString();
-
-            if (MessageBox.Show("Bạn có chắc chắn muốn xóa điểm?", "Xác nhận",
-                MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                SqlCommand deleteCmd = new SqlCommand(
-                    "DELETE FROM tblDiem WHERE MaSV=@MaSV AND MaLop=@MaLop", conn);
-                deleteCmd.Parameters.AddWithValue("@MaSV", maSV);
-                deleteCmd.Parameters.AddWithValue("@MaLop", maLop);
-                conn.Open();
-                deleteCmd.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Đã xóa điểm!");
-                LoadBangDiemTheoLop(maLop);
-
-            }
-        }
         
 
 
@@ -162,54 +123,79 @@ namespace BTLQUANLYSINHVIEN
        
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string maSV = cboMaSV.SelectedValue.ToString();
+         
+           if( cboMaLop.SelectedIndex == -1)
+            {
+                MessageBox.Show("Chọn lớp trước!");
+                return;
+            }
+
+
             string maLop = cboMaLop.SelectedValue.ToString();
 
-            SqlCommand checkCmd = new SqlCommand(
-                "SELECT COUNT(*) FROM tblDiem WHERE MaSV=@MaSV AND MaLop=@MaLop", conn);
-            checkCmd.Parameters.AddWithValue("@MaSV", maSV);
-            checkCmd.Parameters.AddWithValue("@MaLop", maLop);
-            conn.Open();
-            int count = (int)checkCmd.ExecuteScalar();
-            conn.Close();
 
-            if (count > 0)
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
-                if (MessageBox.Show("Điểm đã tồn tại. Bạn có muốn cập nhật không?", "Xác nhận",
-                    MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    SqlCommand updateCmd = new SqlCommand(
-                        "UPDATE tblDiem SET DiemTX=@TX, DiemGK=@GK, DiemCK=@CK WHERE MaSV=@MaSV AND MaLop=@MaLop", conn);
-                    updateCmd.Parameters.AddWithValue("@TX", txtDiemTX.Text);
-                    updateCmd.Parameters.AddWithValue("@GK", txtDiemGK.Text);
-                    updateCmd.Parameters.AddWithValue("@CK", txtDiemCK.Text);
-                    updateCmd.Parameters.AddWithValue("@MaSV", maSV);
-                    updateCmd.Parameters.AddWithValue("@MaLop", maLop);
-                    conn.Open();
-                    updateCmd.ExecuteNonQuery();
-                    conn.Close();
-                    MessageBox.Show("Đã cập nhật điểm!");
-                    LoadBangDiemTheoLop(maLop);
-
-                }
-            }
-            else
-            {
-                SqlCommand insertCmd = new SqlCommand(
-                    "INSERT INTO tblDiem(MaSV, MaLop, DiemTX, DiemGK, DiemCK) VALUES(@MaSV,@MaLop,@TX,@GK,@CK)", conn);
-                insertCmd.Parameters.AddWithValue("@MaSV", maSV);
-                insertCmd.Parameters.AddWithValue("@MaLop", maLop);
-                insertCmd.Parameters.AddWithValue("@TX", txtDiemTX.Text);
-                insertCmd.Parameters.AddWithValue("@GK", txtDiemGK.Text);
-                insertCmd.Parameters.AddWithValue("@CK", txtDiemCK.Text);
                 conn.Open();
-                insertCmd.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Đã thêm điểm!");
-                LoadBangDiemTheoLop(maLop);
+                foreach (DataGridViewRow row in dataGridViewTheoLop.Rows)
+                {
+                    if (row.IsNewRow) continue;
 
+                    string maSV = row.Cells["MaSV"].Value.ToString();
+
+                    float diemTX = Convert.ToSingle(row.Cells["DiemTX"].Value);
+                    float diemGK = Convert.ToSingle(row.Cells["DiemGK"].Value);
+                    float diemCK = Convert.ToSingle(row.Cells["DiemCK"].Value);
+
+                    // kiểm tra đã tồn tại chưa
+                    string checkSql = @"SELECT COUNT(*) FROM tblDiem 
+                                WHERE MaSV=@MaSV AND MaLop=@MaLop";
+
+                    SqlCommand checkCmd = new SqlCommand(checkSql, conn);
+                    checkCmd.Parameters.AddWithValue("@MaSV", maSV);
+                    checkCmd.Parameters.AddWithValue("@MaLop", maLop);
+
+                    int count = (int)checkCmd.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        // UPDATE
+                        string updateSql = @"UPDATE tblDiem
+                                     SET DiemTX=@DiemTX,
+                                         DiemGK=@DiemGK,
+                                         DiemCK=@DiemCK
+                                     WHERE MaSV=@MaSV AND MaLop=@MaLop";
+
+                        SqlCommand updateCmd = new SqlCommand(updateSql, conn);
+                        updateCmd.Parameters.AddWithValue("@DiemTX", diemTX);
+                        updateCmd.Parameters.AddWithValue("@DiemGK", diemGK);
+                        updateCmd.Parameters.AddWithValue("@DiemCK", diemCK);
+                        updateCmd.Parameters.AddWithValue("@MaSV", maSV);
+                        updateCmd.Parameters.AddWithValue("@MaLop", maLop);
+
+                        updateCmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        // INSERT
+                        string insertSql = @"INSERT INTO tblDiem(MaSV, MaLop, DiemTX, DiemGK, DiemCK)
+                                    VALUES(@MaSV, @MaLop, @DiemTX, @DiemGK, @DiemCK)";
+
+                        SqlCommand insertCmd = new SqlCommand(insertSql, conn);
+                        insertCmd.Parameters.AddWithValue("@MaSV", maSV);
+                        insertCmd.Parameters.AddWithValue("@MaLop", maLop);
+                        insertCmd.Parameters.AddWithValue("@DiemTX", diemTX);
+                        insertCmd.Parameters.AddWithValue("@DiemGK", diemGK);
+                        insertCmd.Parameters.AddWithValue("@DiemCK", diemCK);
+
+                        insertCmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Lưu điểm thành công!");
             }
         }
+        
 
         private void txtDiemTX_TextChanged(object sender, EventArgs e)
         {
@@ -224,6 +210,36 @@ namespace BTLQUANLYSINHVIEN
         private void lblMaLop_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridViewTheoLop_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewTheoLop.IsCurrentCellDirty)
+            {
+                dataGridViewTheoLop.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void dataGridViewTheoLop_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var row = dataGridViewTheoLop.Rows[e.RowIndex];
+
+            try
+            {
+                float tx = row.Cells["DiemTX"].Value != null ? Convert.ToSingle(row.Cells["DiemTX"].Value) : 0;
+                float gk = row.Cells["DiemGK"].Value != null ? Convert.ToSingle(row.Cells["DiemGK"].Value) : 0;
+                float ck = row.Cells["DiemCK"].Value != null ? Convert.ToSingle(row.Cells["DiemCK"].Value) : 0;
+
+                float tb = tx * 0.2f + gk * 0.3f + ck * 0.5f;
+
+                row.Cells["DiemTB"].Value = Math.Round(tb, 2);
+            }
+            catch
+            {
+                // bỏ qua lỗi nhập sai kiểu
+            }
         }
     }
 }
