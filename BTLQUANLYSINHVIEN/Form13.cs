@@ -66,13 +66,11 @@ namespace BTLQUANLYSINHVIEN
             {
                 conn.Open();
 
-                string sql = @"SELECT * FROM tblLop";
+               
 
                 SqlCommand cmd = new SqlCommand();
 
-            
-                    sql += " AND l.TenLop = @TenLop";
-                    cmd.Parameters.AddWithValue("@TenLop", cboTenLop.Text.Trim());
+            string sql = "SELECT * FROM tblLop WHERE TenLop = @TenLop";
                 
                 cmd.CommandText = sql;
                 cmd.Connection = conn;
@@ -87,45 +85,53 @@ namespace BTLQUANLYSINHVIEN
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(cboTenLop.Text))
+          
+            if (cboTenLop.SelectedIndex == -1)
             {
-                MessageBox.Show("Chọn ten  lớp cần xóa!");
+                MessageBox.Show("Chọn lớp cần xóa!");
                 return;
             }
 
             if (MessageBox.Show("Xóa lớp này?", "Xác nhận",
                 MessageBoxButtons.YesNo) == DialogResult.No) return;
 
+            // 🔥 LẤY MaLop (QUAN TRỌNG NHẤT)
+            string maLop = cboTenLop.SelectedValue.ToString();
+
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
 
-                // Xóa dữ liệu liên quan trước (tránh lỗi FK)
-                SqlCommand cmd0 = new SqlCommand("DELETE FROM tblDiem WHERE TenLop=@TenLop", conn);
-                cmd0.Parameters.AddWithValue("@TenLop", cboTenLop.Text);
+                // Xóa bảng con trước
+                SqlCommand cmd0 = new SqlCommand(
+                    "DELETE FROM tblDiem WHERE MaLop = @MaLop", conn);
+                cmd0.Parameters.AddWithValue("@MaLop", maLop);
                 cmd0.ExecuteNonQuery();
 
-                SqlCommand cmd1 = new SqlCommand("DELETE FROM tblDangKy WHERE TenLop=@TenLop", conn);
-                cmd1.Parameters.AddWithValue("@TenLop", cboTenLop.Text);
+                SqlCommand cmd1 = new SqlCommand(
+                    "DELETE FROM tblDangKy WHERE MaLop = @MaLop", conn);
+                cmd1.Parameters.AddWithValue("@MaLop", maLop);
                 cmd1.ExecuteNonQuery();
 
-                SqlCommand cmd2 = new SqlCommand("DELETE FROM tblLop WHERE TenLop=@TenLop", conn);
-                cmd2.Parameters.AddWithValue("@TenLop", cboTenLop.Text);
+                // Xóa lớp
+                SqlCommand cmd2 = new SqlCommand(
+                    "DELETE FROM tblLop WHERE MaLop = @MaLop", conn);
+                cmd2.Parameters.AddWithValue("@MaLop", maLop);
 
                 int rows = cmd2.ExecuteNonQuery();
 
                 MessageBox.Show(rows > 0 ? "Xóa thành công" : "Không tìm thấy");
 
                 LoadLopHoc();
-               
             }
+        
         }
 
      
 
         private void cboTenLop_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            
         }
 
         private void btnThemLop_Click(object sender, EventArgs e)

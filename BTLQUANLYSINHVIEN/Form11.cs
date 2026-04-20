@@ -86,6 +86,10 @@ namespace BTLQUANLYSINHVIEN
                         cmd.Parameters.AddWithValue("@Ma", maSV);
                         cmd.ExecuteNonQuery();
 
+                        cmd = new SqlCommand("DELETE FROM tblLop WHERE MaSV=@Ma", conn, trans);
+                        cmd.Parameters.AddWithValue("@Ma", maSV);
+                        cmd.ExecuteNonQuery();
+
                         // 3. tblUser
                         cmd = new SqlCommand("DELETE FROM tblUser WHERE MaSV=@Ma", conn, trans);
                         cmd.Parameters.AddWithValue("@Ma", maSV);
