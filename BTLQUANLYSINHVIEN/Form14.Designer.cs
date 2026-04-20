@@ -148,6 +148,7 @@
             this.txtTinChi.Name = "txtTinChi";
             this.txtTinChi.Size = new System.Drawing.Size(213, 22);
             this.txtTinChi.TabIndex = 20;
+            this.txtTinChi.TextChanged += new System.EventHandler(this.txtTinChi_TextChanged);
             // 
             // lbTinchi
             // 

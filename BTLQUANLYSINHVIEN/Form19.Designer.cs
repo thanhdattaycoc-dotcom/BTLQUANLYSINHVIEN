@@ -45,6 +45,9 @@
             this.btnQuayLai = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cboGioiTinh = new System.Windows.Forms.ComboBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.txtCCCD = new System.Windows.Forms.TextBox();
+            this.lblCCCD = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -191,11 +194,29 @@
             this.cboGioiTinh.Size = new System.Drawing.Size(225, 24);
             this.cboGioiTinh.TabIndex = 17;
             // 
+            // txtCCCD
+            // 
+            this.txtCCCD.Location = new System.Drawing.Point(561, 141);
+            this.txtCCCD.Name = "txtCCCD";
+            this.txtCCCD.Size = new System.Drawing.Size(201, 22);
+            this.txtCCCD.TabIndex = 18;
+            // 
+            // lblCCCD
+            // 
+            this.lblCCCD.AutoSize = true;
+            this.lblCCCD.Location = new System.Drawing.Point(457, 151);
+            this.lblCCCD.Name = "lblCCCD";
+            this.lblCCCD.Size = new System.Drawing.Size(44, 16);
+            this.lblCCCD.TabIndex = 19;
+            this.lblCCCD.Text = "CCCD";
+            // 
             // FormThemSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 450);
+            this.Controls.Add(this.lblCCCD);
+            this.Controls.Add(this.txtCCCD);
             this.Controls.Add(this.cboGioiTinh);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnQuayLai);
@@ -241,5 +262,8 @@
         private System.Windows.Forms.Button btnQuayLai;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox cboGioiTinh;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.TextBox txtCCCD;
+        private System.Windows.Forms.Label lblCCCD;
     }
 }

@@ -51,8 +51,8 @@ namespace BTLQUANLYSINHVIEN
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string sql = "INSERT INTO tblSinhVien (MaSV, TenSV, NgaySinh, GioiTinh, Email, SoDienThoai, NoiSinh) " +
-                             "VALUES (@MaSV, @TenSV, @NgaySinh, @GioiTinh, @Email, @SoDienThoai, @NoiSinh)";
+                string sql = "INSERT INTO tblSinhVien (MaSV, TenSV, NgaySinh, GioiTinh, Email, SoDienThoai, NoiSinh, CCCD) " +
+                             "VALUES (@MaSV, @TenSV, @NgaySinh, @GioiTinh, @Email, @SoDienThoai, @NoiSinh, @CCCD)";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@MaSV", txtMaSV.Text);
                 cmd.Parameters.AddWithValue("@TenSV", txtTenSV.Text);
@@ -61,6 +61,7 @@ namespace BTLQUANLYSINHVIEN
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
                 cmd.Parameters.AddWithValue("@SoDienThoai", txtSoDienThoai.Text);
                 cmd.Parameters.AddWithValue("@NoiSinh", txtNoiSinh.Text);
+                cmd.Parameters.AddWithValue("@CCCD", txtCCCD.Text);
 
                 try
                 {

@@ -238,7 +238,7 @@ namespace BTLQUANLYSINHVIEN
                 conn.Open();
 
                 SqlDataAdapter da = new SqlDataAdapter(
-                    "SELECT MaMon, TenMon FROM tblMonHoc", conn);
+                    "SELECT MaMon, TenMon, SoTinChi  FROM tblMonHoc", conn);
 
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -264,9 +264,16 @@ namespace BTLQUANLYSINHVIEN
         private void cboMa_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (isLoading) return;
-            if (cboMa.SelectedValue == null) return;
 
-            cboTen.SelectedValue = cboMa.SelectedValue;
+            DataRowView row = cboMa.SelectedItem as DataRowView;
+            if (row == null) return;
+
+            isLoading = true;
+
+            cboTen.SelectedValue = row["MaMon"];
+            txtTinChi.Text = row["SoTinChi"].ToString(); // 👈 HIỆN TÍN CHỈ
+
+            isLoading = false;
         }
         
         
@@ -274,9 +281,21 @@ namespace BTLQUANLYSINHVIEN
         private void cboTen_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (isLoading) return;
-            if (cboTen.SelectedValue == null) return;
 
-            cboMa.SelectedValue = cboTen.SelectedValue;
+            DataRowView row = cboTen.SelectedItem as DataRowView;
+            if (row == null) return;
+
+            isLoading = true;
+
+            cboMa.SelectedValue = row["MaMon"];
+            txtTinChi.Text = row["SoTinChi"].ToString(); // 👈 HIỆN TÍN CHỈ
+
+            isLoading = false;
+
+        }
+
+        private void txtTinChi_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
