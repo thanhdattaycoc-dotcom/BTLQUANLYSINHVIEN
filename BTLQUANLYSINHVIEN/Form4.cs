@@ -69,5 +69,11 @@ namespace BTLQUANLYSINHVIEN
             lblHoTenGiaoVien.Text = "Họ và tên giáo viên: " + NhoTamThoi.TenGV;
         }
 
+        private void btnLichDay_Click(object sender, EventArgs e)
+        {
+            FormLichDay frm = new FormLichDay();
+            frm.ShowDialog(this);
+
+        }
     }
 }

@@ -56,6 +56,7 @@
             this.lblMaLop.Size = new System.Drawing.Size(51, 16);
             this.lblMaLop.TabIndex = 0;
             this.lblMaLop.Text = "Mã lớp:";
+            this.lblMaLop.Click += new System.EventHandler(this.lblMaLop_Click);
             // 
             // lblMaSinhVien
             // 

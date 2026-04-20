@@ -33,10 +33,19 @@ namespace BTLQUANLYSINHVIEN
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
-                string query = @"SELECT l.MaLop, l.TenLop, l.MaMon, l.Thu, l.Tiet, l.Phong, l.NgayMo, l.NgayDong
-                         FROM tblDangKy dk
-                         JOIN tblLop l ON dk.MaLop = l.MaLop
-                         WHERE dk.MaSV = @MaSV";
+                string query = @" SELECT 
+                                        l.MaLop,
+                                        l.TenLop,
+                                        mh.TenMon,
+                                        gv.TenGV,
+                                        l.Thu,
+                                        l.Tiet,
+                                        l.Phong
+                                    FROM tblDangKy dk
+                                    JOIN tblLop l ON dk.MaLop = l.MaLop
+                                    JOIN tblMonHoc mh ON l.MaMon = mh.MaMon
+                                    JOIN tblGiangVien gv ON l.MaGV = gv.MaGV
+                                    WHERE dk.MaSV = @MaSV";
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 da.SelectCommand.Parameters.AddWithValue("@MaSV", NhoTamThoi.MaSV);
                 DataTable dt = new DataTable();
@@ -56,13 +65,24 @@ namespace BTLQUANLYSINHVIEN
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
-                string query = @"SELECT l.MaLop, l.TenLop, l.MaMon, l.MaGV, l.Thu, l.Tiet, l.Phong, l.SiSoToiDa,
-                                (l.SiSoToiDa - COUNT(dk.MaSV)) AS ConLai,
-                                l.NgayMo, l.NgayDong
-                         FROM tblLop l
-                         LEFT JOIN tblDangKy dk ON l.MaLop = dk.MaLop
-                         WHERE GETDATE() BETWEEN l.NgayMo AND l.NgayDong
-                         GROUP BY l.MaLop, l.TenLop, l.MaMon, l.MaGV, l.Thu, l.Tiet, l.Phong, l.SiSoToiDa, l.NgayMo, l.NgayDong";
+                string query = @" SELECT 
+                                        l.MaLop,
+                                        l.TenLop,
+                                        mh.TenMon,
+                                        gv.TenGV,
+                                        l.Thu,
+                                        l.Tiet,
+                                        l.Phong,
+                                        l.NgayMo,
+                                        l.NgayDong
+                                    FROM tblLop l
+                                    LEFT JOIN tblDangKy dk ON l.MaLop = dk.MaLop
+                                    JOIN tblMonHoc mh ON l.MaMon = mh.MaMon
+                                    JOIN tblGiangVien gv ON l.MaGV = gv.MaGV
+                                    WHERE GETDATE() BETWEEN l.NgayMo AND l.NgayDong
+                                    GROUP BY 
+                                        l.MaLop, l.TenLop, mh.TenMon, gv.TenGV,
+                                        l.Thu, l.Tiet, l.Phong, l.NgayMo, l.NgayDong";
 
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
@@ -81,9 +101,7 @@ namespace BTLQUANLYSINHVIEN
             if (cboMaLop.SelectedItem != null)
             {
                 DataRowView row = (DataRowView)cboMaLop.SelectedItem;
-                int conLai = Convert.ToInt32(row["ConLai"]);
-                int siSoToiDa = Convert.ToInt32(row["SiSoToiDa"]);
-                lblCon.Text = $"Còn: {conLai}/{siSoToiDa}";
+            
             }
         }
 
@@ -183,6 +201,16 @@ namespace BTLQUANLYSINHVIEN
         private void btnQuayLai_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cboHuyDangKy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewLopDaDangKy_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

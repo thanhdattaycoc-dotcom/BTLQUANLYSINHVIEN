@@ -220,5 +220,10 @@ namespace BTLQUANLYSINHVIEN
         {
             this.Close();
         }
+
+        private void lblMaLop_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

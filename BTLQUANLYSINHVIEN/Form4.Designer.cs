@@ -36,6 +36,7 @@
             this.btnMonHoc = new System.Windows.Forms.Button();
             this.btnNhapDiem = new System.Windows.Forms.Button();
             this.btnQuanLyLopHoc = new System.Windows.Forms.Button();
+            this.btnLichDay = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblMaGiaoVien
@@ -118,11 +119,22 @@
             this.btnQuanLyLopHoc.UseVisualStyleBackColor = true;
             this.btnQuanLyLopHoc.Click += new System.EventHandler(this.btnQuanLyLopHoc_Click);
             // 
+            // btnLichDay
+            // 
+            this.btnLichDay.Location = new System.Drawing.Point(546, 66);
+            this.btnLichDay.Name = "btnLichDay";
+            this.btnLichDay.Size = new System.Drawing.Size(203, 81);
+            this.btnLichDay.TabIndex = 10;
+            this.btnLichDay.Text = "Lịch dạy tuần này";
+            this.btnLichDay.UseVisualStyleBackColor = true;
+            this.btnLichDay.Click += new System.EventHandler(this.btnLichDay_Click);
+            // 
             // FormTrangChuGiangVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnLichDay);
             this.Controls.Add(this.btnQuanLyLopHoc);
             this.Controls.Add(this.btnNhapDiem);
             this.Controls.Add(this.btnMonHoc);
@@ -151,5 +163,6 @@
         private System.Windows.Forms.Button btnMonHoc;
         private System.Windows.Forms.Button btnNhapDiem;
         private System.Windows.Forms.Button btnQuanLyLopHoc;
+        private System.Windows.Forms.Button btnLichDay;
     }
 }

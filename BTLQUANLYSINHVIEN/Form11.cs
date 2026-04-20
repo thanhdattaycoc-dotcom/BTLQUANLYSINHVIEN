@@ -49,6 +49,7 @@ namespace BTLQUANLYSINHVIEN
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+        
             string maSV = txtTimKiem.Text.Trim();
 
             if (string.IsNullOrEmpty(maSV))
@@ -69,40 +70,36 @@ namespace BTLQUANLYSINHVIEN
                 using (SqlConnection conn = new SqlConnection(connStr))
                 {
                     conn.Open();
-
                     SqlTransaction trans = conn.BeginTransaction();
 
                     try
                     {
                         SqlCommand cmd;
 
-                        // 1. tblDiem
+                        // 1. Xóa bảng điểm
                         cmd = new SqlCommand("DELETE FROM tblDiem WHERE MaSV=@Ma", conn, trans);
                         cmd.Parameters.AddWithValue("@Ma", maSV);
                         cmd.ExecuteNonQuery();
 
-                        // 2. tblDangKy
+                        // 2. Xóa đăng ký lớp
                         cmd = new SqlCommand("DELETE FROM tblDangKy WHERE MaSV=@Ma", conn, trans);
                         cmd.Parameters.AddWithValue("@Ma", maSV);
                         cmd.ExecuteNonQuery();
 
-                        cmd = new SqlCommand("DELETE FROM tblLop WHERE MaSV=@Ma", conn, trans);
-                        cmd.Parameters.AddWithValue("@Ma", maSV);
-                        cmd.ExecuteNonQuery();
-
-                        // 3. tblUser
+                        // 3. Xóa user
                         cmd = new SqlCommand("DELETE FROM tblUser WHERE MaSV=@Ma", conn, trans);
                         cmd.Parameters.AddWithValue("@Ma", maSV);
                         cmd.ExecuteNonQuery();
 
-                        // 4. tblSinhVien
+                        // 4. Cuối cùng mới xóa sinh viên
                         cmd = new SqlCommand("DELETE FROM tblSinhVien WHERE MaSV=@Ma", conn, trans);
                         cmd.Parameters.AddWithValue("@Ma", maSV);
-                        cmd.ExecuteNonQuery();
+                        int rows = cmd.ExecuteNonQuery();
 
                         trans.Commit();
 
-                        MessageBox.Show("Xóa thành công!");
+                        MessageBox.Show(rows > 0 ? "Xóa thành công!" : "Không tìm thấy sinh viên");
+
                         FormQuanLySinhVien_Load(sender, e);
                     }
                     catch (Exception ex)
@@ -113,6 +110,7 @@ namespace BTLQUANLYSINHVIEN
                 }
             }
         }
+        
 
         private void btnThem_Click(object sender, EventArgs e)
         {
