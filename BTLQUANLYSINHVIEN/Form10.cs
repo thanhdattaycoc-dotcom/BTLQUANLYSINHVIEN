@@ -122,5 +122,24 @@ namespace BTLQUANLYSINHVIEN
         {
             this.Close();
         }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            string sql = "SELECT * FROM tblGiangVien";
+
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            rptQuanLyGiangVien rpt = new rptQuanLyGiangVien();
+            rpt.SetDataSource(dt);
+
+            FormQuanlyGV f = new FormQuanlyGV();
+            f.crystalReportViewer1.ReportSource = rpt;
+            f.ShowDialog();
+        }
     }
 }

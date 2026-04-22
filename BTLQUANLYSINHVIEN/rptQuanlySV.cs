@@ -16,14 +16,14 @@ namespace BTLQUANLYSINHVIEN {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptThongTinSinhVien : ReportClass {
+    public class rptQuanlySV : ReportClass {
         
-        public rptThongTinSinhVien() {
+        public rptQuanlySV() {
         }
         
         public override string ResourceName {
             get {
-                return "rptThongTinSinhVien.rpt";
+                return "rptQuanlySV.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace BTLQUANLYSINHVIEN {
         
         public override string FullResourceName {
             get {
-                return "BTLQUANLYSINHVIEN.rptThongTinSinhVien.rpt";
+                return "BTLQUANLYSINHVIEN.rptQuanlySV.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace BTLQUANLYSINHVIEN {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptThongTinSinhVien : Component, ICachedReport {
+    public class CachedrptQuanlySV : Component, ICachedReport {
         
-        public CachedrptThongTinSinhVien() {
+        public CachedrptQuanlySV() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace BTLQUANLYSINHVIEN {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptThongTinSinhVien rpt = new rptThongTinSinhVien();
+            rptQuanlySV rpt = new rptQuanlySV();
             rpt.Site = this.Site;
             return rpt;
         }
