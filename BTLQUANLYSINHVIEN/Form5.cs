@@ -193,5 +193,24 @@ namespace BTLQUANLYSINHVIEN
         {
             lblNgaySinh.Text = dateNgaySinh.Value.ToString("dd/MM/yyyy");
         }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            string sql = "SELECT * FROM tblSinhVien";
+
+            SqlDataAdapter da = new SqlDataAdapter(sql,conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            rptThongTinSinhVien rpt = new rptThongTinSinhVien();
+            rpt.SetDataSource(dt);
+
+            FormThongtinSV f = new FormThongtinSV();
+            f.crystalReportViewer1.ReportSource = rpt;
+            f.ShowDialog();
+        }
     }
 }

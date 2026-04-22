@@ -43,6 +43,7 @@
             this.btnCapnhat = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.lblDoiNgay = new System.Windows.Forms.Label();
+            this.btnIn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnQuayLai
@@ -177,11 +178,22 @@
             this.lblDoiNgay.TabIndex = 26;
             this.lblDoiNgay.Text = "Chọn ngày sinh:";
             // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(675, 9);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(113, 28);
+            this.btnIn.TabIndex = 27;
+            this.btnIn.Text = "In thông tin";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // FormThongTinSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.lblDoiNgay);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnCapnhat);
@@ -221,5 +233,6 @@
         private System.Windows.Forms.Button btnCapnhat;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Label lblDoiNgay;
+        private System.Windows.Forms.Button btnIn;
     }
 }
