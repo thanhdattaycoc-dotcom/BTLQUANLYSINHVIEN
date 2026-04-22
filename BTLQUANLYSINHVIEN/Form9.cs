@@ -13,7 +13,7 @@ namespace BTLQUANLYSINHVIEN
 {
     public partial class FormThongTinGiangVien : Form
     {
-        string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
+        string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
 
         public FormThongTinGiangVien()
         {
@@ -209,6 +209,24 @@ namespace BTLQUANLYSINHVIEN
             }
         }
 
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            string sql = "SELECT * FROM tblGiangVien";
+
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            rptThongTinGiangVien rpt = new rptThongTinGiangVien();
+            rpt.SetDataSource(dt);
+
+            FormThongtinSV f = new FormThongtinSV();
+            f.crystalReportViewer1.ReportSource = rpt;
+            f.ShowDialog();
+        }
     }
 }
 

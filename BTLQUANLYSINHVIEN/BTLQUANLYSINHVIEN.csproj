@@ -177,6 +177,12 @@
     <Compile Include="FormQuanlySV.Designer.cs">
       <DependentUpon>FormQuanlySV.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormThongtinGV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormThongtinGV.Designer.cs">
+      <DependentUpon>FormThongtinGV.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormThongtinSV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptQuanlySinhVien.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptThongTinGiangVien.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptThongTinGiangVien.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="rptThongTinSinhVien.cs">
@@ -264,6 +276,9 @@
     <EmbeddedResource Include="FormQuanlySV.resx">
       <DependentUpon>FormQuanlySV.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormThongtinGV.resx">
+      <DependentUpon>FormThongtinGV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormThongtinSV.resx">
       <DependentUpon>FormThongtinSV.cs</DependentUpon>
     </EmbeddedResource>
@@ -283,6 +298,10 @@
     <EmbeddedResource Include="rptQuanlySinhVien.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptQuanlySinhVien.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptThongTinGiangVien.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptThongTinGiangVien.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptThongTinSinhVien.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
