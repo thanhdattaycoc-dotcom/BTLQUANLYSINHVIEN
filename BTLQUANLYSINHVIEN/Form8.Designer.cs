@@ -111,6 +111,7 @@
             this.lblCon.Size = new System.Drawing.Size(37, 16);
             this.lblCon.TabIndex = 6;
             this.lblCon.Text = "Còn: ";
+            this.lblCon.Click += new System.EventHandler(this.lblCon_Click);
             // 
             // btnDangKy
             // 

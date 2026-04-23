@@ -66,6 +66,7 @@ namespace BTLQUANLYSINHVIEN
             {
                 conn.Open();
                 string query = @" SELECT 
+                                       
                                         l.MaLop,
                                         l.TenLop,
                                         mh.TenMon,
@@ -74,7 +75,9 @@ namespace BTLQUANLYSINHVIEN
                                         l.Tiet,
                                         l.Phong,
                                         l.NgayMo,
-                                        l.NgayDong
+                                        l.NgayDong,
+                                          l.SiSoToiDa ,COUNT(dk.MaSV) AS DaDangKy,
+                                            l.SiSoToiDa - COUNT(dk.MaSV) AS ConLai
                                     FROM tblLop l
                                     LEFT JOIN tblDangKy dk ON l.MaLop = dk.MaLop
                                     JOIN tblMonHoc mh ON l.MaMon = mh.MaMon
@@ -82,7 +85,7 @@ namespace BTLQUANLYSINHVIEN
                                     WHERE GETDATE() BETWEEN l.NgayMo AND l.NgayDong
                                     GROUP BY 
                                         l.MaLop, l.TenLop, mh.TenMon, gv.TenGV,
-                                        l.Thu, l.Tiet, l.Phong, l.NgayMo, l.NgayDong";
+                                        l.Thu, l.Tiet, l.Phong, l.NgayMo, l.NgayDong,  l.SiSoToiDa";
 
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
@@ -101,7 +104,11 @@ namespace BTLQUANLYSINHVIEN
             if (cboMaLop.SelectedItem != null)
             {
                 DataRowView row = (DataRowView)cboMaLop.SelectedItem;
-            
+
+                int conLai = row["ConLai"] != DBNull.Value ? Convert.ToInt32(row["ConLai"]) : 0;
+                int toiDa = row["SiSoToiDa"] != DBNull.Value ? Convert.ToInt32(row["SiSoToiDa"]) : 0;
+
+                lblCon.Text = $"Sĩ số: {conLai}/{toiDa}";
             }
         }
 
@@ -209,6 +216,11 @@ namespace BTLQUANLYSINHVIEN
         }
 
         private void dataGridViewLopDaDangKy_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lblCon_Click(object sender, EventArgs e)
         {
 
         }

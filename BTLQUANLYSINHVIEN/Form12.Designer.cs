@@ -36,6 +36,7 @@
             this.btnQuayLai = new System.Windows.Forms.Button();
             this.lblTenMon = new System.Windows.Forms.Label();
             this.cboMaLop = new System.Windows.Forms.ComboBox();
+            this.btnIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTheoLop)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,11 +120,23 @@
             this.cboMaLop.TabIndex = 11;
             this.cboMaLop.SelectedIndexChanged += new System.EventHandler(this.cboMaLop_SelectedIndexChanged);
             // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(1175, 1);
+            this.btnIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(113, 28);
+            this.btnIn.TabIndex = 43;
+            this.btnIn.Text = "In thông tin";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // FormQuanLyNhapDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 658);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.lblTenMon);
             this.Controls.Add(this.btnQuayLai);
             this.Controls.Add(this.btnLuu);
@@ -151,5 +164,6 @@
         private System.Windows.Forms.Button btnQuayLai;
         private System.Windows.Forms.Label lblTenMon;
         private System.Windows.Forms.ComboBox cboMaLop;
+        private System.Windows.Forms.Button btnIn;
     }
 }

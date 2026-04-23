@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSetSinhVien.cs">
+      <DependentUpon>DataSetSinhVien.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSinhVien.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -165,6 +168,12 @@
     <Compile Include="Form9.Designer.cs">
       <DependentUpon>Form9.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormQuanlyDiemLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormQuanlyDiemLop.Designer.cs">
+      <DependentUpon>FormQuanlyDiemLop.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormQuanlyGV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +201,12 @@
     <Compile Include="NhoTamThoi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rptQuanLyDiemLop.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptQuanLyDiemLop.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptQuanLyGiangVien.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -270,6 +285,9 @@
     <EmbeddedResource Include="Form9.resx">
       <DependentUpon>Form9.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormQuanlyDiemLop.resx">
+      <DependentUpon>FormQuanlyDiemLop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormQuanlyGV.resx">
       <DependentUpon>FormQuanlyGV.cs</DependentUpon>
     </EmbeddedResource>
@@ -291,6 +309,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="rptQuanLyDiemLop.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptQuanLyDiemLop1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptQuanLyGiangVien.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptQuanLyGiangVien.cs</LastGenOutput>

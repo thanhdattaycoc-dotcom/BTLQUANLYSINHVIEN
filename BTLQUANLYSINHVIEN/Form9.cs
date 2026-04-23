@@ -223,7 +223,7 @@ namespace BTLQUANLYSINHVIEN
             rptThongTinGiangVien rpt = new rptThongTinGiangVien();
             rpt.SetDataSource(dt);
 
-            FormThongtinSV f = new FormThongtinSV();
+            FormThongtinGV f = new FormThongtinGV();
             f.crystalReportViewer1.ReportSource = rpt;
             f.ShowDialog();
         }

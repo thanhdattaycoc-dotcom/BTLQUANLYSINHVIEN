@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BTLQUANLYSINHVIEN
 {
-    public partial class FormThongtinGV : Form
+    public partial class FormQuanlyDiemLop : Form
     {
-        public FormThongtinGV()
+        public FormQuanlyDiemLop()
         {
             InitializeComponent();
         }
