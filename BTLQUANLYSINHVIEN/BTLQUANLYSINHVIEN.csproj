@@ -204,12 +204,6 @@
       <DependentUpon>rptQuanLyDiemLop.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="rptQuanLyDiemLop1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptQuanLyDiemLop.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="rptQuanLyGiangVien.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
