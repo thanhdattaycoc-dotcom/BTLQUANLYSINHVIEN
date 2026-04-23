@@ -44,6 +44,7 @@
             this.btnHuyDangKy = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblMonHoc = new System.Windows.Forms.Label();
+            this.btnInDanhSach = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLopDaDangKy)).BeginInit();
             this.SuspendLayout();
@@ -203,11 +204,22 @@
             this.lblMonHoc.TabIndex = 16;
             this.lblMonHoc.Text = "Môn học:";
             // 
+            // btnInDanhSach
+            // 
+            this.btnInDanhSach.Location = new System.Drawing.Point(964, 27);
+            this.btnInDanhSach.Name = "btnInDanhSach";
+            this.btnInDanhSach.Size = new System.Drawing.Size(118, 23);
+            this.btnInDanhSach.TabIndex = 17;
+            this.btnInDanhSach.Text = "IN Danh Sách";
+            this.btnInDanhSach.UseVisualStyleBackColor = true;
+            this.btnInDanhSach.Click += new System.EventHandler(this.btnInDanhSach_Click);
+            // 
             // FormDangKyLopHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 672);
+            this.Controls.Add(this.btnInDanhSach);
             this.Controls.Add(this.lblMonHoc);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHuyDangKy);
@@ -252,5 +264,6 @@
         private System.Windows.Forms.Button btnHuyDangKy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblMonHoc;
+        private System.Windows.Forms.Button btnInDanhSach;
     }
 }
