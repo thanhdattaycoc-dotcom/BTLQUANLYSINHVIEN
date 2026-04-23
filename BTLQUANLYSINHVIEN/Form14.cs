@@ -298,5 +298,25 @@ namespace BTLQUANLYSINHVIEN
         {
 
         }
+
+        private void btnInDanhSach_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            string sql = "SELECT * FROM tblMonHoc";
+
+
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            rptMon rpt = new rptMon();
+            rpt.SetDataSource(dt);
+
+            FormQuanlyMon f = new FormQuanlyMon();
+            f.crystalReportViewer1.ReportSource = rpt;
+            f.ShowDialog();
+        }
     }
 }

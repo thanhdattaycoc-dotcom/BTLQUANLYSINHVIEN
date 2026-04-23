@@ -35,6 +35,7 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnQuayLai = new System.Windows.Forms.Button();
+            this.btnInDanhSach = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLop)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,11 +108,22 @@
             this.btnQuayLai.UseVisualStyleBackColor = true;
             this.btnQuayLai.Click += new System.EventHandler(this.btnQuayLai_Click);
             // 
+            // btnInDanhSach
+            // 
+            this.btnInDanhSach.Location = new System.Drawing.Point(670, 12);
+            this.btnInDanhSach.Name = "btnInDanhSach";
+            this.btnInDanhSach.Size = new System.Drawing.Size(118, 25);
+            this.btnInDanhSach.TabIndex = 18;
+            this.btnInDanhSach.Text = "In danh sách";
+            this.btnInDanhSach.UseVisualStyleBackColor = true;
+            this.btnInDanhSach.Click += new System.EventHandler(this.btnInDanhSach_Click);
+            // 
             // FormQuanLyLopHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnInDanhSach);
             this.Controls.Add(this.btnQuayLai);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnTimKiem);
@@ -136,5 +148,6 @@
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnQuayLai;
+        private System.Windows.Forms.Button btnInDanhSach;
     }
 }

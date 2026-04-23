@@ -13,6 +13,8 @@ namespace BTLQUANLYSINHVIEN
 {
     public partial class FormDangKyLopHoc : Form
     {
+        string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
+
         public FormDangKyLopHoc()
         {
             InitializeComponent();
@@ -29,7 +31,6 @@ namespace BTLQUANLYSINHVIEN
         }
         private void LoadLopDaDangKy()
         {
-            string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
@@ -61,7 +62,6 @@ namespace BTLQUANLYSINHVIEN
         }
         private void LoadLopConMo()
         {
-            string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
@@ -130,7 +130,6 @@ namespace BTLQUANLYSINHVIEN
                 return;
             }
 
-            string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
@@ -180,7 +179,6 @@ namespace BTLQUANLYSINHVIEN
 
             if (result == DialogResult.Yes)
             {
-                string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
                 using (SqlConnection conn = new SqlConnection(connStr))
                 {
                     conn.Open();
@@ -222,26 +220,62 @@ namespace BTLQUANLYSINHVIEN
 
         private void btnInDanhSach_Click(object sender, EventArgs e)
         {
-            string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(connStr);
-            conn.Open();
-
-            string sql = "SELECT * FROM tblLop";
-
-            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            rptLop rpt = new rptLop();
-            rpt.SetDataSource(dt);
-
-            FormDanhSachLop f = new FormDanhSachLop();
-            f.crystalReportViewer1.ReportSource = rpt;
-            f.ShowDialog();
+            
         }
 
         private void lblCon_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnInDanhSach_Click_1(object sender, EventArgs e)
+        {
+            string MaSV = NhoTamThoi.MaSV;
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+
+            DataSetSinhVien ds = new DataSetSinhVien();
+            ds.EnforceConstraints = false;
+
+
+            SqlDataAdapter daSV = new SqlDataAdapter(
+               "SELECT * FROM tblSinhVien WHERE MaSV = @MaSV", conn);
+            daSV.SelectCommand.Parameters.AddWithValue("@MaSV", MaSV);
+            daSV.Fill(ds.Tables["tblSinhVien"]);
+
+            // tblDangKy (lọc theo MaLop)
+            SqlDataAdapter daDK = new SqlDataAdapter(
+                "SELECT * FROM tblDangKy", conn);
+            daDK.Fill(ds.Tables["tblDangKy"]);
+
+
+
+            SqlDataAdapter daLop = new SqlDataAdapter(
+                "SELECT * FROM tblLop" ,conn);
+            daLop.Fill(ds.Tables["tblLop"]);
+
+
+            // tblMonHoc (BẮT BUỘC phải có)
+            new SqlDataAdapter(
+                "SELECT * FROM tblMonHoc",
+                conn
+            ).Fill(ds.Tables["tblMonHoc"]);
+
+            // tblGiangVien (nếu report có dùng)
+            new SqlDataAdapter(
+                "SELECT * FROM tblGiangVien",
+                conn
+            ).Fill(ds.Tables["tblGiangVien"]);
+
+
+            rptDanhSachLopDangKy rpt = new rptDanhSachLopDangKy();
+            rpt.SetDataSource(ds);
+
+            FormDanhSachLopDaDangKy f = new FormDanhSachLopDaDangKy();
+            f.crystalReportViewer1.ReportSource = rpt;
+            f.crystalReportViewer1.Refresh();
+            f.ShowDialog();
 
         }
     }

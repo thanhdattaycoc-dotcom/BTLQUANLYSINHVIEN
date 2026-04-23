@@ -207,13 +207,13 @@
             // 
             // btnInDanhSach
             // 
-            this.btnInDanhSach.Location = new System.Drawing.Point(964, 27);
+            this.btnInDanhSach.Location = new System.Drawing.Point(995, 12);
             this.btnInDanhSach.Name = "btnInDanhSach";
-            this.btnInDanhSach.Size = new System.Drawing.Size(118, 23);
-            this.btnInDanhSach.TabIndex = 17;
-            this.btnInDanhSach.Text = "IN Danh Sách";
+            this.btnInDanhSach.Size = new System.Drawing.Size(118, 25);
+            this.btnInDanhSach.TabIndex = 19;
+            this.btnInDanhSach.Text = "In danh sách";
             this.btnInDanhSach.UseVisualStyleBackColor = true;
-            this.btnInDanhSach.Click += new System.EventHandler(this.btnInDanhSach_Click);
+            this.btnInDanhSach.Click += new System.EventHandler(this.btnInDanhSach_Click_1);
             // 
             // FormDangKyLopHoc
             // 

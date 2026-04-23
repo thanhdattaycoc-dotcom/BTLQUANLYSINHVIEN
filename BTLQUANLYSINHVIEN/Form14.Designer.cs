@@ -43,6 +43,7 @@
             this.lbTinchi = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnCapNhat = new System.Windows.Forms.Button();
+            this.btnInDanhSach = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -169,11 +170,22 @@
             this.btnCapNhat.UseVisualStyleBackColor = true;
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
+            // btnInDanhSach
+            // 
+            this.btnInDanhSach.Location = new System.Drawing.Point(878, 12);
+            this.btnInDanhSach.Name = "btnInDanhSach";
+            this.btnInDanhSach.Size = new System.Drawing.Size(118, 25);
+            this.btnInDanhSach.TabIndex = 23;
+            this.btnInDanhSach.Text = "In danh sách";
+            this.btnInDanhSach.UseVisualStyleBackColor = true;
+            this.btnInDanhSach.Click += new System.EventHandler(this.btnInDanhSach_Click);
+            // 
             // FormQuanLyMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(999, 450);
+            this.Controls.Add(this.btnInDanhSach);
             this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.lbTinchi);
             this.Controls.Add(this.txtTinChi);
@@ -213,5 +225,6 @@
         private System.Windows.Forms.Label lbTinchi;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button btnCapNhat;
+        private System.Windows.Forms.Button btnInDanhSach;
     }
 }

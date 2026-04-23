@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Web;
 
 namespace BTLQUANLYSINHVIEN
 {
@@ -61,7 +62,7 @@ namespace BTLQUANLYSINHVIEN
                 MessageBox.Show("Mời bạn chọn tên lớp!");
                 return;
             }
-
+            string MaLop = cboTenLop.SelectedValue.ToString();
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
@@ -70,10 +71,11 @@ namespace BTLQUANLYSINHVIEN
 
                 SqlCommand cmd = new SqlCommand();
 
-            string sql = "SELECT * FROM tblLop WHERE TenLop = @TenLop";
+            string sql = "SELECT * FROM tblLop WHERE MaLop = @MaLop";
                 
                 cmd.CommandText = sql;
                 cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@MaLop", MaLop);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -145,6 +147,27 @@ namespace BTLQUANLYSINHVIEN
         private void btnQuayLai_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnInDanhSach_Click(object sender, EventArgs e)
+        {
+            
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            string sql = "SELECT * FROM tblLop";
+
+            
+            SqlDataAdapter da = new SqlDataAdapter(sql,conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            rptLop rpt = new rptLop();
+            rpt.SetDataSource(dt);
+
+            FormDanhSachLop f = new FormDanhSachLop();
+            f.crystalReportViewer1.ReportSource = rpt;
+            f.ShowDialog();
         }
     }
 
