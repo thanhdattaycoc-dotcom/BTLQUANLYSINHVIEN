@@ -32,7 +32,7 @@ namespace BTLQUANLYSINHVIEN
             D.DiemGK,
             D.DiemCK,
             CAST(ROUND(
-            (ISNULL(D.DiemTX,0)*0.2 + ISNULL(D.DiemGK,0)*0.3 + ISNULL(D.DiemCK,0)*0.5),
+            (ISNULL(D.DiemTX,0)*0.1 + ISNULL(D.DiemGK,0)*0.2 + ISNULL(D.DiemCK,0)*0.7),
             2) AS FLOAT) AS DiemTB
         FROM tblLop L
         JOIN tblMonHoc M ON L.MaMon = M.MaMon
