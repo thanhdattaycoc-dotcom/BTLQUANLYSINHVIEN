@@ -29,7 +29,7 @@ namespace BTLQUANLYSINHVIEN
         }
         private void LoadLopDaDangKy()
         {
-            string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
+            string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
@@ -61,7 +61,7 @@ namespace BTLQUANLYSINHVIEN
         }
         private void LoadLopConMo()
         {
-            string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
+            string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
@@ -180,7 +180,7 @@ namespace BTLQUANLYSINHVIEN
 
             if (result == DialogResult.Yes)
             {
-                string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
+                string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
                 using (SqlConnection conn = new SqlConnection(connStr))
                 {
                     conn.Open();
@@ -218,6 +218,26 @@ namespace BTLQUANLYSINHVIEN
         private void dataGridViewLopDaDangKy_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnInDanhSach_Click(object sender, EventArgs e)
+        {
+            string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            string sql = "SELECT * FROM tblLop";
+
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            rptLop rpt = new rptLop();
+            rpt.SetDataSource(dt);
+
+            FormDanhSachLop f = new FormDanhSachLop();
+            f.crystalReportViewer1.ReportSource = rpt;
+            f.ShowDialog();
         }
 
         private void lblCon_Click(object sender, EventArgs e)

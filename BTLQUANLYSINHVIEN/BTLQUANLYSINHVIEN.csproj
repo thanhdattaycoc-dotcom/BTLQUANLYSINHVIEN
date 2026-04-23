@@ -165,13 +165,20 @@
     <Compile Include="Form9.Designer.cs">
       <DependentUpon>Form9.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDanhSachLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDanhSachLop.Designer.cs">
+      <DependentUpon>FormDanhSachLop.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormQuanlyDiemLop.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormQuanlyDiemLop.Designer.cs">
       <DependentUpon>FormQuanlyDiemLop.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormQuanlyGV.cs">
+	
+	  <Compile Include="FormQuanlyGV.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormQuanlyGV.Designer.cs">
@@ -202,6 +209,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptQuanLyDiemLop.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptLop.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptLop.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="rptQuanLyGiangVien.cs">
@@ -285,6 +298,9 @@
     <EmbeddedResource Include="FormQuanlyDiemLop.resx">
       <DependentUpon>FormQuanlyDiemLop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDanhSachLop.resx">
+      <DependentUpon>FormDanhSachLop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormQuanlyGV.resx">
       <DependentUpon>FormQuanlyGV.cs</DependentUpon>
     </EmbeddedResource>
@@ -306,6 +322,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="rptLop.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLop.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptQuanLyDiemLop.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptQuanLyDiemLop1.cs</LastGenOutput>
