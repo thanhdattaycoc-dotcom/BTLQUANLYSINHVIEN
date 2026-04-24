@@ -122,7 +122,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(1175, 1);
+            this.btnIn.Location = new System.Drawing.Point(1102, 27);
             this.btnIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(113, 28);

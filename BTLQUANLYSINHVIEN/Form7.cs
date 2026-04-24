@@ -35,7 +35,7 @@ namespace BTLQUANLYSINHVIEN
         // 1. Hàm load dữ liệu từ DB
         private DataTable LoadBangDiem()
         {
-            string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
+            string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
@@ -133,5 +133,68 @@ namespace BTLQUANLYSINHVIEN
         {
 
         }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+
+            string MaSV = NhoTamThoi.MaSV;
+            string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+
+                DataSetSinhVien ds = new DataSetSinhVien();
+                ds.EnforceConstraints = false;
+
+                // tblSinhVien
+              
+                    SqlDataAdapter daSV = new SqlDataAdapter("SELECT * FROM tblSinhVien WHERE MaSV = @MaSV", conn);
+               
+                daSV.SelectCommand.Parameters.AddWithValue("@MaSV", MaSV);
+                daSV.Fill(ds.Tables["tblLop"]);
+
+
+                // tblLop (lọc theo MaLop)
+                SqlDataAdapter daLop = new SqlDataAdapter("SELECT * FROM tblLop", conn);
+              
+                daLop.Fill(ds.Tables["tblLop"]);
+
+                // tblDangKy (lọc theo MaLop)
+                SqlDataAdapter daDK = new SqlDataAdapter(
+                    "SELECT * FROM tblDangKy", conn);
+
+                daDK.Fill(ds.Tables["tblDangKy"]);
+
+                // tblDiem (lọc theo MaLop)
+                SqlDataAdapter daDiem = new SqlDataAdapter(
+                    "SELECT * FROM tblDiem ",
+                    conn
+                );
+               
+                daDiem.Fill(ds.Tables["tblDiem"]);
+
+                // tblMonHoc (BẮT BUỘC phải có)
+                new SqlDataAdapter(
+                    "SELECT * FROM tblMonHoc",
+                    conn
+                ).Fill(ds.Tables["tblMonHoc"]);
+
+                // tblGiangVien (nếu report có dùng)
+                new SqlDataAdapter(
+                    "SELECT * FROM tblGiangVien",
+                    conn
+                ).Fill(ds.Tables["tblGiangVien"]);
+
+                // Gán report
+               rptDiemCaNhan rpt = new rptDiemCaNhan();
+                rpt.SetDataSource(ds);
+
+                FormBangDiemCaNhan f = new FormBangDiemCaNhan();
+                f.crystalReportViewer1.ReportSource = rpt;
+                f.crystalReportViewer1.Refresh();
+                f.ShowDialog();
+            }
+        }
     }
-}
+    }
+
