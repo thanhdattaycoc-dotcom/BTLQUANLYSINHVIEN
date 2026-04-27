@@ -35,6 +35,7 @@
             this.lblQuaMon = new System.Windows.Forms.Label();
             this.lblXepLoai = new System.Windows.Forms.Label();
             this.lblHocLai = new System.Windows.Forms.Label();
+            this.btnIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewBangDiem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,11 +111,23 @@
             this.lblHocLai.TabIndex = 15;
             this.lblHocLai.Text = "Số môn học lại:";
             // 
+            // btnIn
+            // 
+            this.btnIn.Location = new System.Drawing.Point(848, 27);
+            this.btnIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(113, 28);
+            this.btnIn.TabIndex = 44;
+            this.btnIn.Text = "In thông tin";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // FormDiemHocTap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 541);
+            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.lblHocLai);
             this.Controls.Add(this.lblXepLoai);
             this.Controls.Add(this.lblQuaMon);
@@ -140,5 +153,6 @@
         private System.Windows.Forms.Label lblQuaMon;
         private System.Windows.Forms.Label lblXepLoai;
         private System.Windows.Forms.Label lblHocLai;
+        private System.Windows.Forms.Button btnIn;
     }
 }

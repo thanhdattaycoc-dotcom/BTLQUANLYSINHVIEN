@@ -13,7 +13,7 @@ namespace BTLQUANLYSINHVIEN
 {
     public partial class FormThongTinSinhVien : Form
     {
-        string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
+        string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
 
 
         public FormThongTinSinhVien()
