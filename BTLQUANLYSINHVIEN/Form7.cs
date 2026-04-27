@@ -35,7 +35,7 @@ namespace BTLQUANLYSINHVIEN
         // 1. Hàm load dữ liệu từ DB
         private DataTable LoadBangDiem()
         {
-            string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
+            string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
@@ -138,7 +138,7 @@ namespace BTLQUANLYSINHVIEN
         {
 
             string MaSV = NhoTamThoi.MaSV;
-            string connStr = @"Data Source=LAPTOP-HPIHPRR9\DONG3;Initial Catalog=QLSinhVien;Integrated Security=True";
+            string connStr = "Data Source=.;Initial Catalog=QLSinhVien;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
@@ -151,7 +151,7 @@ namespace BTLQUANLYSINHVIEN
                     SqlDataAdapter daSV = new SqlDataAdapter("SELECT * FROM tblSinhVien WHERE MaSV = @MaSV", conn);
                
                 daSV.SelectCommand.Parameters.AddWithValue("@MaSV", MaSV);
-                daSV.Fill(ds.Tables["tblLop"]);
+                daSV.Fill(ds.Tables["tblSinhVien"]);
 
 
                 // tblLop (lọc theo MaLop)
@@ -161,16 +161,15 @@ namespace BTLQUANLYSINHVIEN
 
                 // tblDangKy (lọc theo MaLop)
                 SqlDataAdapter daDK = new SqlDataAdapter(
-                    "SELECT * FROM tblDangKy", conn);
-
+    "SELECT * FROM tblDangKy WHERE MaSV = @MaSV", conn);
+                daDK.SelectCommand.Parameters.AddWithValue("@MaSV", MaSV);
                 daDK.Fill(ds.Tables["tblDangKy"]);
 
+             
                 // tblDiem (lọc theo MaLop)
                 SqlDataAdapter daDiem = new SqlDataAdapter(
-                    "SELECT * FROM tblDiem ",
-                    conn
-                );
-               
+     "SELECT * FROM tblDiem WHERE MaSV = @MaSV", conn);
+                daDiem.SelectCommand.Parameters.AddWithValue("@MaSV", MaSV);
                 daDiem.Fill(ds.Tables["tblDiem"]);
 
                 // tblMonHoc (BẮT BUỘC phải có)
@@ -184,9 +183,9 @@ namespace BTLQUANLYSINHVIEN
                     "SELECT * FROM tblGiangVien",
                     conn
                 ).Fill(ds.Tables["tblGiangVien"]);
-
+      
                 // Gán report
-               rptDiemCaNhan rpt = new rptDiemCaNhan();
+                rptDiemCaNhan rpt = new rptDiemCaNhan();
                 rpt.SetDataSource(ds);
 
                 FormBangDiemCaNhan f = new FormBangDiemCaNhan();
