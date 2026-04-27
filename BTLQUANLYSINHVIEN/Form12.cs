@@ -236,26 +236,30 @@ namespace BTLQUANLYSINHVIEN
             }
         }
 
+        // C#
         private void dataGridViewTheoLop_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
-            var row = dataGridViewTheoLop.Rows[e.RowIndex];
+            int col = e.ColumnIndex;
+            var dgv = dataGridViewTheoLop;
+            if (col != dgv.Columns["DiemTX"].Index &&
+                col != dgv.Columns["DiemGK"].Index &&
+                col != dgv.Columns["DiemCK"].Index) return;
 
+            var row = dgv.Rows[e.RowIndex];
             try
             {
                 float tx = row.Cells["DiemTX"].Value != null ? Convert.ToSingle(row.Cells["DiemTX"].Value) : 0;
                 float gk = row.Cells["DiemGK"].Value != null ? Convert.ToSingle(row.Cells["DiemGK"].Value) : 0;
                 float ck = row.Cells["DiemCK"].Value != null ? Convert.ToSingle(row.Cells["DiemCK"].Value) : 0;
 
-                float tb = tx * 0.2f + gk * 0.3f + ck * 0.5f;
-
-                row.Cells["DiemTB"].Value = tb.ToString("0.00");
+                string newTb = (tx * 0.2f + gk * 0.3f + ck * 0.5f).ToString("0.00");
+                var tbCell = row.Cells["DiemTB"];
+                if (!object.Equals(tbCell.Value, newTb))
+                    tbCell.Value = newTb;
             }
-            catch
-            {
-                // bỏ qua lỗi nhập sai kiểu
-            }
+            catch { }
         }
 
         private void btnIn_Click(object sender, EventArgs e)

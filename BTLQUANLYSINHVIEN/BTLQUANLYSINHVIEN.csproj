@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSetSinhVien.cs">
+      <DependentUpon>DataSetSinhVien.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSinhVien.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
