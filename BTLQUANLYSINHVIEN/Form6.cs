@@ -102,5 +102,7 @@ namespace BTLQUANLYSINHVIEN
             FormLichHoc frm = new FormLichHoc();
             this.Close();
         }
+
+       
     }
 }
