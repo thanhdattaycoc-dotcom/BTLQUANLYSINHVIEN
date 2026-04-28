@@ -59,6 +59,7 @@
             this.lblMaSV.Size = new System.Drawing.Size(53, 16);
             this.lblMaSV.TabIndex = 0;
             this.lblMaSV.Text = "Mã SV :";
+            this.lblMaSV.Click += new System.EventHandler(this.lblMaSV_Click);
             // 
             // lblTenSV
             // 
@@ -68,6 +69,7 @@
             this.lblTenSV.Size = new System.Drawing.Size(58, 16);
             this.lblTenSV.TabIndex = 1;
             this.lblTenSV.Text = "Tên SV :";
+            this.lblTenSV.Click += new System.EventHandler(this.lblTenSV_Click);
             // 
             // lblNgaySinh
             // 
@@ -77,6 +79,7 @@
             this.lblNgaySinh.Size = new System.Drawing.Size(75, 16);
             this.lblNgaySinh.TabIndex = 2;
             this.lblNgaySinh.Text = "Ngày Sinh :";
+            this.lblNgaySinh.Click += new System.EventHandler(this.lblNgaySinh_Click);
             // 
             // lblGioiTinh
             // 
@@ -86,6 +89,7 @@
             this.lblGioiTinh.Size = new System.Drawing.Size(66, 16);
             this.lblGioiTinh.TabIndex = 3;
             this.lblGioiTinh.Text = "Giới Tính :";
+            this.lblGioiTinh.Click += new System.EventHandler(this.lblGioiTinh_Click);
             // 
             // lblEmail
             // 
@@ -95,6 +99,7 @@
             this.lblEmail.Size = new System.Drawing.Size(47, 16);
             this.lblEmail.TabIndex = 4;
             this.lblEmail.Text = "Email :";
+            this.lblEmail.Click += new System.EventHandler(this.lblEmail_Click);
             // 
             // lblSoDienThoai
             // 
@@ -104,6 +109,7 @@
             this.lblSoDienThoai.Size = new System.Drawing.Size(98, 16);
             this.lblSoDienThoai.TabIndex = 5;
             this.lblSoDienThoai.Text = "Só Điện Thoại :";
+            this.lblSoDienThoai.Click += new System.EventHandler(this.lblSoDienThoai_Click);
             // 
             // lblNoiSinh
             // 
@@ -113,6 +119,7 @@
             this.lblNoiSinh.Size = new System.Drawing.Size(63, 16);
             this.lblNoiSinh.TabIndex = 6;
             this.lblNoiSinh.Text = "Nơi Sinh :";
+            this.lblNoiSinh.Click += new System.EventHandler(this.lblNoiSinh_Click);
             // 
             // txtMaSV
             // 
@@ -120,6 +127,7 @@
             this.txtMaSV.Name = "txtMaSV";
             this.txtMaSV.Size = new System.Drawing.Size(218, 22);
             this.txtMaSV.TabIndex = 7;
+            this.txtMaSV.TextChanged += new System.EventHandler(this.txtMaSV_TextChanged);
             // 
             // txtTenSV
             // 
@@ -127,6 +135,7 @@
             this.txtTenSV.Name = "txtTenSV";
             this.txtTenSV.Size = new System.Drawing.Size(218, 22);
             this.txtTenSV.TabIndex = 8;
+            this.txtTenSV.TextChanged += new System.EventHandler(this.txtTenSV_TextChanged);
             // 
             // txtEmail
             // 
@@ -134,6 +143,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(203, 22);
             this.txtEmail.TabIndex = 10;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // txtSoDienThoai
             // 
@@ -141,6 +151,7 @@
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(201, 22);
             this.txtSoDienThoai.TabIndex = 11;
+            this.txtSoDienThoai.TextChanged += new System.EventHandler(this.txtSoDienThoai_TextChanged);
             // 
             // txtNoiSinh
             // 
@@ -148,6 +159,7 @@
             this.txtNoiSinh.Name = "txtNoiSinh";
             this.txtNoiSinh.Size = new System.Drawing.Size(203, 22);
             this.txtNoiSinh.TabIndex = 12;
+            this.txtNoiSinh.TextChanged += new System.EventHandler(this.txtNoiSinh_TextChanged);
             // 
             // dateTimePicker1
             // 
@@ -155,6 +167,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(218, 22);
             this.dateTimePicker1.TabIndex = 13;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // btnThem
             // 
@@ -185,6 +198,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(668, 197);
             this.dataGridView1.TabIndex = 16;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // cboGioiTinh
             // 
@@ -193,6 +207,7 @@
             this.cboGioiTinh.Name = "cboGioiTinh";
             this.cboGioiTinh.Size = new System.Drawing.Size(225, 24);
             this.cboGioiTinh.TabIndex = 17;
+            this.cboGioiTinh.SelectedIndexChanged += new System.EventHandler(this.cboGioiTinh_SelectedIndexChanged);
             // 
             // txtCCCD
             // 
@@ -200,6 +215,7 @@
             this.txtCCCD.Name = "txtCCCD";
             this.txtCCCD.Size = new System.Drawing.Size(201, 22);
             this.txtCCCD.TabIndex = 18;
+            this.txtCCCD.TextChanged += new System.EventHandler(this.txtCCCD_TextChanged);
             // 
             // lblCCCD
             // 
@@ -209,6 +225,7 @@
             this.lblCCCD.Size = new System.Drawing.Size(44, 16);
             this.lblCCCD.TabIndex = 19;
             this.lblCCCD.Text = "CCCD";
+            this.lblCCCD.Click += new System.EventHandler(this.lblCCCD_Click);
             // 
             // FormThemSinhVien
             // 

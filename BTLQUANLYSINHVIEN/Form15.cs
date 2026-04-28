@@ -96,5 +96,10 @@ namespace BTLQUANLYSINHVIEN
             FormLichDay frm = new FormLichDay();
             this.Close();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

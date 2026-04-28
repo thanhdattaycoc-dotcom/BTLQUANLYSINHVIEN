@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrystalReport3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataSetSinhVien.cs">
       <DependentUpon>DataSetSinhVien.xsd</DependentUpon>
     </Compile>
@@ -210,6 +216,18 @@
     <Compile Include="FormQuanlySV.Designer.cs">
       <DependentUpon>FormQuanlySV.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTEST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTEST.Designer.cs">
+      <DependentUpon>FormTEST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTeSTTT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTeSTTT.Designer.cs">
+      <DependentUpon>FormTeSTTT.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormThongtinGV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +297,10 @@
       <DependentUpon>rptThongTinSinhVien.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="CrystalReport3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport3.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,6 +375,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormQuanlySV.resx">
       <DependentUpon>FormQuanlySV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTEST.resx">
+      <DependentUpon>FormTEST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTeSTTT.resx">
+      <DependentUpon>FormTeSTTT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormThongtinGV.resx">
       <DependentUpon>FormThongtinGV.cs</DependentUpon>

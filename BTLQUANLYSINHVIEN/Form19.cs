@@ -80,6 +80,91 @@ namespace BTLQUANLYSINHVIEN
         {
             this.Close();
         }
+
+        private void txtCCCD_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboGioiTinh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lblCCCD_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNoiSinh_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSoDienThoai_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTenSV_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaSV_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNoiSinh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSoDienThoai_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEmail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblGioiTinh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNgaySinh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTenSV_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMaSV_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 

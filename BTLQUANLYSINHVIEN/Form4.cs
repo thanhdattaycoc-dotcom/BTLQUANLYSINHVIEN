@@ -75,5 +75,11 @@ namespace BTLQUANLYSINHVIEN
             frm.ShowDialog(this);
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormTEST frm = new FormTEST();
+            frm.ShowDialog(this);
+        }
     }
 }
