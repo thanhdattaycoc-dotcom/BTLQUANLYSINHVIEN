@@ -1,4 +1,6 @@
-﻿using System;
+﻿//ALTER table tblGiangVien
+//ADD Masothue nvarchar(20);
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -125,13 +127,14 @@ namespace BTLQUANLYSINHVIEN
 
         private void btnIn_Click(object sender, EventArgs e)
         {
+            string Masothue = txtMasothuecantim.Text;
             SqlConnection conn = new SqlConnection(connStr);
             conn.Open();
 
-            string sql = "SELECT * FROM tblGiangVien";
+            string sql = "SELECT * FROM tblGiangVien where @Masothue = Masothue";
 
             SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-            DataTable dt = new DataTable();
+            da.SelectCommand.Parameters.AddWithValue("@Masothue", Masothue); DataTable dt = new DataTable();
             da.Fill(dt);
 
             rptQuanLyGiangVien rpt = new rptQuanLyGiangVien();
@@ -140,6 +143,25 @@ namespace BTLQUANLYSINHVIEN
             FormQuanlyGV f = new FormQuanlyGV();
             f.crystalReportViewer1.ReportSource = rpt;
             f.ShowDialog();
+        }
+
+        private void btnMasothuecantim_Click(object sender, EventArgs e)
+        {
+            string Masothue = txtMasothuecantim.Text.Trim();
+            string query = "SELECT * FROM tblGiangVien WHERE Masothue = @Masothue";
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                da.SelectCommand.Parameters.AddWithValue("@Masothue", Masothue);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

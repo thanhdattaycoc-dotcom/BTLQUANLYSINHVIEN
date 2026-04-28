@@ -47,6 +47,9 @@
             this.lblNgaySinh = new System.Windows.Forms.Label();
             this.lblTen = new System.Windows.Forms.Label();
             this.lblMa = new System.Windows.Forms.Label();
+            this.lblMasothue = new System.Windows.Forms.Label();
+            this.txtMaSoThue = new System.Windows.Forms.TextBox();
+            this.btnCapnhat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,7 +99,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(144, 184);
+            this.btnThem.Location = new System.Drawing.Point(170, 200);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 33;
@@ -209,11 +212,41 @@
             this.lblMa.TabIndex = 20;
             this.lblMa.Text = "Mã Giảng viên :";
             // 
+            // lblMasothue
+            // 
+            this.lblMasothue.AutoSize = true;
+            this.lblMasothue.Location = new System.Drawing.Point(65, 180);
+            this.lblMasothue.Name = "lblMasothue";
+            this.lblMasothue.Size = new System.Drawing.Size(72, 16);
+            this.lblMasothue.TabIndex = 39;
+            this.lblMasothue.Text = "Mã số thuế";
+            // 
+            // txtMaSoThue
+            // 
+            this.txtMaSoThue.Location = new System.Drawing.Point(170, 172);
+            this.txtMaSoThue.Name = "txtMaSoThue";
+            this.txtMaSoThue.Size = new System.Drawing.Size(218, 22);
+            this.txtMaSoThue.TabIndex = 40;
+            this.txtMaSoThue.TextChanged += new System.EventHandler(this.txtMaSoThue_TextChanged);
+            // 
+            // btnCapnhat
+            // 
+            this.btnCapnhat.Location = new System.Drawing.Point(393, 200);
+            this.btnCapnhat.Name = "btnCapnhat";
+            this.btnCapnhat.Size = new System.Drawing.Size(75, 23);
+            this.btnCapnhat.TabIndex = 41;
+            this.btnCapnhat.Text = "Cập nhật";
+            this.btnCapnhat.UseVisualStyleBackColor = true;
+            this.btnCapnhat.Click += new System.EventHandler(this.btnCapnhat_Click);
+            // 
             // FormThemGiangVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCapnhat);
+            this.Controls.Add(this.txtMaSoThue);
+            this.Controls.Add(this.lblMasothue);
             this.Controls.Add(this.lblCCCD);
             this.Controls.Add(this.txtCCCD);
             this.Controls.Add(this.cboGioiTinh);
@@ -263,5 +296,8 @@
         private System.Windows.Forms.Label lblNgaySinh;
         private System.Windows.Forms.Label lblTen;
         private System.Windows.Forms.Label lblMa;
+        private System.Windows.Forms.Label lblMasothue;
+        private System.Windows.Forms.TextBox txtMaSoThue;
+        private System.Windows.Forms.Button btnCapnhat;
     }
 }

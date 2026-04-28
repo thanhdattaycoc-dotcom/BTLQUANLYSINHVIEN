@@ -36,6 +36,9 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnQuayLai = new System.Windows.Forms.Button();
             this.btnIn = new System.Windows.Forms.Button();
+            this.btnMasothuecantim = new System.Windows.Forms.Button();
+            this.txtMasothuecantim = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,6 +77,7 @@
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(158, 22);
             this.txtTimKiem.TabIndex = 5;
+            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
             // btnThem
             // 
@@ -81,7 +85,7 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(108, 23);
             this.btnThem.TabIndex = 9;
-            this.btnThem.Text = "Thêm";
+            this.btnThem.Text = "Thêm/Câp nhật";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
@@ -115,11 +119,40 @@
             this.btnIn.UseVisualStyleBackColor = true;
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
+            // btnMasothuecantim
+            // 
+            this.btnMasothuecantim.Location = new System.Drawing.Point(673, 113);
+            this.btnMasothuecantim.Name = "btnMasothuecantim";
+            this.btnMasothuecantim.Size = new System.Drawing.Size(157, 23);
+            this.btnMasothuecantim.TabIndex = 30;
+            this.btnMasothuecantim.Text = "Tim theo ma so thue";
+            this.btnMasothuecantim.UseVisualStyleBackColor = true;
+            this.btnMasothuecantim.Click += new System.EventHandler(this.btnMasothuecantim_Click);
+            // 
+            // txtMasothuecantim
+            // 
+            this.txtMasothuecantim.Location = new System.Drawing.Point(730, 69);
+            this.txtMasothuecantim.Name = "txtMasothuecantim";
+            this.txtMasothuecantim.Size = new System.Drawing.Size(214, 22);
+            this.txtMasothuecantim.TabIndex = 31;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(576, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 16);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Ma so thue can tim";
+            // 
             // FormQuanLyGiangVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1207, 490);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtMasothuecantim);
+            this.Controls.Add(this.btnMasothuecantim);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.btnQuayLai);
             this.Controls.Add(this.btnXoa);
@@ -147,5 +180,8 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnQuayLai;
         private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Button btnMasothuecantim;
+        private System.Windows.Forms.TextBox txtMasothuecantim;
+        private System.Windows.Forms.Label label1;
     }
 }
